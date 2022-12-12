@@ -23,7 +23,7 @@ public class Ship {
         return true;
     }
 
-    public void sink(){
+    public void sunk(){
         for(Square part: shipParts){
             part.setStatus(SquareStatus.SUNK);
         }
