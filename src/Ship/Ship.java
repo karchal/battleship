@@ -1,6 +1,7 @@
 package Ship;
 
 import Board.Square;
+import Board.SquareStatus;
 
 import java.util.List;
 
@@ -13,5 +14,18 @@ public class Ship {
         this.type = type;
     }
 
+    public boolean checkIfSunk(){
+        for(Square part: shipParts){
+            if (SquareStatus.SHIP.equals(part.getStatus())){
+                return false;
+            }
+        }
+        return true;
+    }
 
+    public void sink(){
+        for(Square part: shipParts){
+            part.setStatus(SquareStatus.SUNK);
+        }
+    }
 }

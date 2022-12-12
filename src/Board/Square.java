@@ -16,12 +16,11 @@ public class Square {
         return status.getCharacter();
     }
 
-    public SquareStatus getStatus(){
-        return this.status;
-    }
-
-    public void setStatus(SquareStatus status){
+    public void setStatus(SquareStatus status) {
         this.status = status;
     }
 
+    public SquareStatus getStatus() {
+        return status;
+    }
 }
