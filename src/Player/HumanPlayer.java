@@ -1,6 +1,6 @@
 package Player;
 
-public class HumanPlayer implements PlayerInterface {
+public class HumanPlayer implements PlayerInterface{
     @Override
     public void getMove() {
 
