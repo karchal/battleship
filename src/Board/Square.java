@@ -14,4 +14,8 @@ public class Square {
     public char getStatusCharacter() {
         return status.getCharacter();
     }
+
+    public void setStatus(SquareStatus status) {
+        this.status = status;
+    }
 }
