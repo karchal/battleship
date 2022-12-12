@@ -5,8 +5,14 @@ import Board.Square;
 import java.util.List;
 
 public class Ship {
-    List<Square> squares;
-    ShipType type;
+    private List<Square> shipParts;
+    private ShipType type;
+
+    public Ship(List<Square> squares, ShipType type) {
+        this.shipParts = squares;
+        this.type = type;
+    }
+
 
 
 }
