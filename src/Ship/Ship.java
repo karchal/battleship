@@ -8,5 +8,4 @@ public class Ship {
     List<Square> squares;
     ShipType type;
 
-
 }
