@@ -15,7 +15,12 @@ public class Ship {
     }
 
     public boolean checkIfSunk(){
-        return false;
+        for(Square part: shipParts){
+            if (SquareStatus.SHIP.equals(part.getStatus())){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void sink(){
