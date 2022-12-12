@@ -1,5 +1,8 @@
+import logic.Game;
+
 public class Battleship {
     public static void main(String[] args){
-        System.out.println("hello");
+        Game game = new Game();
+        game.mainMenu();
     }
 }
