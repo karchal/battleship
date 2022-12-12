@@ -11,7 +11,7 @@ public class Board {
     public Board(int size){
         for(int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
-                this.ocean[i][j] = new Square(i, j);
+                this.ocean[i][j] = new Square(i, j, SquareStatus.EMPTY);
 
             }
         }
