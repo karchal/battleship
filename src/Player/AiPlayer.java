@@ -1,6 +1,6 @@
 package Player;
 
-public class AiPlayer implements PlayerInterface{
+public class AiPlayer implements Player {
     @Override
     public void getMove() {
 
@@ -15,4 +15,5 @@ public class AiPlayer implements PlayerInterface{
     public void showBoards() {
 
     }
+
 }

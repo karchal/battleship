@@ -2,14 +2,14 @@ package logic;
 
 import Player.AiPlayer;
 import Player.HumanPlayer;
-import Player.PlayerInterface;
+import Player.Player;
 import utilities.Display;
 import utilities.Input;
 
 public class Game {
-    PlayerInterface player1;
-    PlayerInterface player2;
-    private PlayerInterface currentPlayer;
+    Player player1;
+    Player player2;
+    private Player currentPlayer;
     private final Display display = new Display();
     private final Input input = new Input();
 
@@ -48,11 +48,13 @@ public class Game {
         this.showWinner();
     }
 
+
     private void showWinner() {
     }
 
-    private PlayerInterface changePlayer() {
-        if (this.currentPlayer == this.player1)this.currentPlayer = this.player2;
+
+    private Player changePlayer() {
+        if (this.currentPlayer == this.player1) this.currentPlayer = this.player2;
         else this.currentPlayer = this.player1;
         return this.currentPlayer;
     }

@@ -26,6 +26,7 @@ public class Board {
                 0 <= col && col < size &&
                 0 <= row && row < size; // Is on board?
     }
+
     public void setSquareStatus(int x, int y, SquareStatus status){
         ocean[x][y].setStatus(status);
         if(status == SquareStatus.SHIP){
@@ -43,5 +44,5 @@ public class Board {
             }
         }
     }
-    }
+}
 

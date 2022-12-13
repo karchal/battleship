@@ -1,6 +1,6 @@
 package Player;
 
-public interface PlayerInterface {
+public interface Player {
     void getMove();
     boolean isAlive();
     void showBoards();
