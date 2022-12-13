@@ -12,4 +12,5 @@ public enum SquareStatus{
     public char getCharacter() {
         return character;
     }
+
 }

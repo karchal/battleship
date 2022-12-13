@@ -3,7 +3,7 @@ package utilities;
 import java.util.Scanner;
 
 public class Input {
-    private final Display display = new Display();
+    //private final Display display = new Display();
     private final Scanner input;
 
     public Input() {

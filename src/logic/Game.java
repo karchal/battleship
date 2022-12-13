@@ -20,7 +20,7 @@ public class Game {
     }
 
     public void setUpGameMode() {
-        this.display.Modes();
+        this.display.showModes();
         int mode = this.getMode();
         switch (mode) {
             case 1 -> playerVsPlayer();
@@ -35,7 +35,7 @@ public class Game {
             if (mode >= 1 && mode <= 3) {
                 return mode;
             }
-            display.message("Choose a number between 1-3");
+            display.showMessage("Choose a number between 1-3");
         }
     }
 
