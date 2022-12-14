@@ -3,13 +3,12 @@ package Player;
 import Board.Square;
 import Board.SquareStatus;
 import Ship.Ship;
-import utilities.ConsoleDisplay;
-import utilities.ConsoleInput;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
+    private static final int POINTS_FOR_WINNING = 100;
 
     protected List<Ship> ships = new ArrayList<>();
     protected List<Square> shots = new ArrayList<>();
@@ -60,5 +59,18 @@ public abstract class Player {
             }
         }
         return null;
+    }
+
+    public int getScore(){
+        return POINTS_FOR_WINNING - shots.size() + getPointsForShips();
+
+    }
+
+    private int getPointsForShips() {
+        int sum = 0;
+        for (Ship ship: ships){
+            sum += ship.getPoints();
+        }
+        return sum;
     }
 }

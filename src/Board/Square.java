@@ -1,6 +1,8 @@
 package Board;
 
 public class Square {
+    private static final int POINTS_FOR_HIT_SQUARE = 1;
+    private static final int POINTS_FOR_SHIP_SQUARE = 3;
 
     private final int X;
     private final int Y;
@@ -30,5 +32,11 @@ public class Square {
 
     public int getY() {
         return Y;
+    }
+
+    public int getPoints() {
+        if (status == SquareStatus.HIT) return POINTS_FOR_HIT_SQUARE;
+        if (status == SquareStatus.SHIP) return POINTS_FOR_SHIP_SQUARE;
+        return 0;
     }
 }
