@@ -37,7 +37,7 @@ public class BoardFactory {
             // pobieranie współrzędnych (*)
             int[] coordinates = input.getCoordinates();
             // pobieranie kierunku,
-            Direction direction = new Direction (input.getDirection());
+            Direction direction = input.getDirection();
             // sprawdzenie czy położenie jest ok, jeśli nie wracamy do (*) +
             board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength());
             // zmiana statusu konkretnych komórek oceanu z EMPTY na SHIP >>

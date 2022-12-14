@@ -1,5 +1,6 @@
 package utilities;
 
+import Board.Direction;
 import utilities.Display;
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -69,13 +70,22 @@ public class Input {
                 && coordinates[1] >= 0 && coordinates[1] <= 10;
     }
 
-    public String getDirection() {
-        String direction ="";
+    public Direction getDirection() {
+        String direction = "";
         while (!direction.equals("v") && !direction.equals("h")) {
             display.showMessage("Type horizontal or vertical.");
             direction = getStringInput();
         }
-        return direction;
+        return getDirectionValue(direction);
+    }
+
+    private Direction getDirectionValue(String direction) {
+        for(Direction d: Direction.values()){
+            if (d.shortcut == direction){
+                return d;
+            }
+        }
+        return null;
     }
 }
 
