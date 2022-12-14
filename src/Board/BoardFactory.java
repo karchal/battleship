@@ -3,12 +3,12 @@ package Board;
 import Player.Player;
 import Ship.Ship;
 import Ship.ShipType;
+import utilities.Input;
 
 import java.util.List;
 
 public class BoardFactory {
     Board board;
-
 
     public Board randomPlacement(Player player) {
         Board board = new Board(player);
@@ -30,7 +30,6 @@ public class BoardFactory {
         Board board = new Board(player);
         Square[][] ocean = board.getOcean();
         for (ShipType shipType: ShipType.values()){
-            // pobieranie współrzędnych (*)
             // pobieranie kierunku,
             // sprawdzenie czy położenie jest ok, jeśli nie wracamy do (*)
             // zmiana statusu konkretnych komórek oceanu z EMPTY na SHIP

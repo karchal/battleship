@@ -46,9 +46,20 @@ public class Board {
         return true;
     }
 
-    public void blockFieldsAround(int x, int y, SquareStatus status){
-        ocean[x][y].setStatus(status);
-        if(status == SquareStatus.SHIP){
+    public void placeShip(int row, int col, Direction direction, int shipLength){
+        if (direction == Direction.HORIZONTAL ) {
+            for (int i = 0; i < shipLength; i++) {
+                ocean[row][col + i].setStatus(SquareStatus.SHIP);
+            }
+        } else {
+            for (int i = 0; i < shipLength; i++) {
+                ocean[row + i][col].setStatus(SquareStatus.SHIP);
+            }
+        }
+    }
+
+    public void blockFieldsAround(int x, int y){
+        if(ocean[x][y].getStatus() == SquareStatus.SHIP){
             if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
