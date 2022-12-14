@@ -1,11 +1,11 @@
 package Board;
 
 public enum Direction {
-    VERTICAL('v'), HORIZONTAL('h');
+    VERTICAL("v"), HORIZONTAL("h");
 
-    public final char shortcut;
+    public final String shortcut;
 
-    Direction(char shortcut) {
+    Direction(String shortcut) {
         this.shortcut = shortcut;
     }
 }

@@ -34,7 +34,7 @@ public class Board {
     }
 
     public void blockFieldsAround(int x, int y){
-        
+
         if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
