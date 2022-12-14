@@ -1,25 +1,62 @@
 package Player;
 
 import Board.Square;
+import Board.SquareStatus;
 import Ship.Ship;
+import utilities.ConsoleDisplay;
+import utilities.ConsoleInput;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public interface Player {
+public abstract class Player {
 
-    int[] getShotCoors();
+    List<Ship> ships = new ArrayList<>();
+    List<Square> shots = new ArrayList<>();
 
-    boolean isAlive();
+    public abstract int[] getShotCoors();
 
-    List<Ship> getShips();
+    public boolean isAlive() {
+        for(Ship ship: ships){
+            if(!ship.isSinking()){
+                return true;
+            }
+        }
+        return false;
+    }
 
-    void updatePlayersShips(Square square);
+    public List<Ship> getShips() {
+        return ships;
+    }
 
-    void addShip(Ship ship);
+    public void updatePlayersShips(Square square) {
+        for(Ship ship: ships){
+            for(Square part: ship.getShipParts()){
+                if (part.getX() == square.getX() && part.getY() == square.getY())
+                    part.setStatus(square.getStatus());
+            }
+        }
+    }
 
-    void addShot(Square square);
+    public void addShip(Ship ship) {
+        ships.add(ship);
+    }
 
-    boolean hasNextShot();
+    public void addShot(Square square){
+        shots.add(square);
+    }
 
-    Ship getShipByShipPart(Square square);
+    public boolean hasNextShot() {
+        SquareStatus type = shots.get(shots.size() - 1).getStatus() ;
+        return SquareStatus.HIT.equals(type) || SquareStatus.SUNK.equals(type);
+    }
+
+    public Ship getShipByShipPart(Square square){
+        for (Ship ship: ships){
+            if (ship.hasSquare(square)){
+                return ship;
+            }
+        }
+        return null;
+    }
 }
