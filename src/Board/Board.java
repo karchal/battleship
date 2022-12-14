@@ -2,6 +2,10 @@ package Board;
 
 import Player.Player;
 import Ship.Ship;
+import Ship.ShipType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static Board.SquareStatus.BLOCKED;
 
@@ -48,16 +52,22 @@ public class Board {
         return true;
     }
 
-    public void placeShip(int row, int col, Direction direction, int shipLength){
+    public void placeShip(int row, int col, Direction direction, int shipLength, ShipType type){
+        List<Square> shipParts = new ArrayList<>();
         if (direction == Direction.HORIZONTAL ) {
             for (int i = 0; i < shipLength; i++) {
                 ocean[row][col + i].setStatus(SquareStatus.SHIP);
+                shipParts.add(ocean[row][col + i]);
+                blockFieldsAround(row, col + i);
             }
         } else {
             for (int i = 0; i < shipLength; i++) {
                 ocean[row + i][col].setStatus(SquareStatus.SHIP);
+                shipParts.add(ocean[row + i][col]);
+                blockFieldsAround(row + i, col);
             }
         }
+        player.addShip(new Ship(shipParts, type));
     }
 
     public void blockFieldsAround(int x, int y){

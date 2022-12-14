@@ -34,22 +34,15 @@ public class BoardFactory {
         Square[][] ocean = board.getOcean();
         Input input = new Input();
         for (ShipType shipType: ShipType.values()){
-            // pobieranie współrzędnych (*)
-            int[] coordinates = input.getCoordinates();
-            // pobieranie kierunku,
-            Direction direction = input.getDirection();
-            // sprawdzenie czy położenie jest ok, jeśli nie wracamy do (*) +
-            board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength());
-            // zmiana statusu konkretnych komórek oceanu z EMPTY na SHIP >>
-            board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength());
-            // stworzenie nowego statku złożonego z tych komórek oceanu i typu shipType
-
-            // dodanie statku do listy playera (metoda player.addShip(ship))
-
-            // zablokowanie komórek wokół statku
-            board.blockFieldsAround(coordinates[0], coordinates[1]);
+            int[] coordinates;
+            Direction direction;
+            do {
+                coordinates = input.getCoordinates();
+                direction = input.getDirection();
+            } while (!board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength()));
+                board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
         }
-        //odblokowanie komórek wokół statków
+
         board.unblockFieldsAround();
         return board;
     }
