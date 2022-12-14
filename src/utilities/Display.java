@@ -12,6 +12,8 @@ public interface Display {
 
     void showBoards(Board board1, Board board2);
 
+    void showBoard(); // we will use it during board creation
+
     void showHighScores();
 
 }
