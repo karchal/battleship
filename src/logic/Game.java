@@ -105,13 +105,13 @@ public class Game {
     }
 
     private void setPlayerVsAi() {
-        player1 = new HumanPlayer();
+        player1 = new HumanPlayer(input);
         player2 = new AiPlayer();
     }
 
     private void setPlayerVsPlayer() {
-        player1 = new HumanPlayer();
-        player2 = new HumanPlayer();
+        player1 = new HumanPlayer(input);
+        player2 = new HumanPlayer(input);
     }
 }
 

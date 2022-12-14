@@ -1,8 +1,5 @@
 package Player;
 
-
-import utilities.ConsoleDisplay;
-import utilities.ConsoleInput;
 import utilities.Input;
 
 
@@ -14,8 +11,6 @@ public class HumanPlayer extends Player {
     }
 
     public int[] getShotCoors() {
-        //eliminate new instance of input
-        ConsoleInput input = new ConsoleInput(new ConsoleDisplay());
         return input.getCoordinates();
     }
 
