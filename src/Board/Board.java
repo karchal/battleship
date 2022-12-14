@@ -3,6 +3,8 @@ package Board;
 import Player.Player;
 import Ship.Ship;
 
+import static Board.SquareStatus.BLOCKED;
+
 public class Board {
     private Player player;
     private Square[][] ocean;
@@ -32,6 +34,7 @@ public class Board {
     }
 
     public void blockFieldsAround(int x, int y){
+        
         if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
@@ -45,7 +48,6 @@ public class Board {
                 ocean[x-1][y-1].setStatus(SquareStatus.BLOCKED);
             }
         }
-    }
 
     public Square[][] getOcean() {
         return ocean;
@@ -69,4 +71,17 @@ public class Board {
     public boolean areAllShipsSunk() {
         return !player.isAlive();
     }
-}
+
+    public void unblockFieldsAround() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++){
+                if (ocean[i][j].getStatus() == BLOCKED) {
+                    ocean[i][j].setStatus(SquareStatus.EMPTY);
+                }
+            }
+        }
+    }
+
+    }
+
+
