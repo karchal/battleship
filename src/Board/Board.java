@@ -33,16 +33,15 @@ public class Board {
             if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
-            if(x > 0 && y < size - 1){
+            if(x > 0 && y < size - 1 && ocean[x-1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x-1][y+1].setStatus(SquareStatus.BLOCKED);
             }
-            if(x < size - 1 && y > 0){
+            if(x < size - 1 && y > 0 && ocean[x+1][y-1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y-1].setStatus(SquareStatus.BLOCKED);
             }
-            if(x > 0 && y > 0){
+            if(x > 0 && y > 0 && ocean[x-1][y-1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x-1][y-1].setStatus(SquareStatus.BLOCKED);
             }
         }
     }
 }
-
