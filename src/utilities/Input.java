@@ -65,9 +65,18 @@ public class Input {
         }
     }
 
-    public boolean areCoordinatesOnBoard(){
+    private boolean areCoordinatesOnBoard(){
         return coordinates[0] >= 0 && coordinates[0] <= 10
                 && coordinates[1] >= 0 && coordinates[1] <= 10;
+    }
+
+    public boolean getYesOrNo(){
+        String input;
+        while (true) {
+            input = getStringInput().toUpperCase();
+            if ("Y".equals(input) || "YES".equals(input)) return true;
+            if ("N".equals(input) || "NO".equals(input)) return false;
+        }
     }
 
     public Direction getDirection() {
