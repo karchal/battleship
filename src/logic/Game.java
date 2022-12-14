@@ -33,6 +33,7 @@ public class Game {
             changePlayer();
             changeBoard();
         }
+        showWinner();
     }
 
     public void start(){
@@ -78,13 +79,11 @@ public class Game {
         else return board2;
     }
 
-    public void end() {
-        showWinner();
-        //maybe some other features like showRanking()
-    }
 
     private void showWinner() {
-        if (player1.isAlive()) display.showMessage("Player 1 won!");
+        if (currentPlayer == player2) {
+            display.showMessage("Player 1 won!");
+        }
         else display.showMessage("Player 2 won!");
     }
 
@@ -112,6 +111,16 @@ public class Game {
     private void setPlayerVsPlayer() {
         player1 = new HumanPlayer(input);
         player2 = new HumanPlayer(input);
+    }
+
+    public Player getWinner(){
+        if (player1.isAlive() && !player2.isAlive()){ // if (currentPlayer == player2){
+            return player1;
+        }
+        if (!player1.isAlive() && player2.isAlive()){ // else{
+            return player2;
+        }
+        return null;
     }
 }
 

@@ -2,6 +2,9 @@ package utilities;
 
 import Board.Board;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public interface Display {
 
     void showMenu();
@@ -14,6 +17,6 @@ public interface Display {
 
     void showBoard(); // we will use it during board creation
 
-    void showHighScores();
+    void showHighScores(Map<String, Integer> topFiveScores);
 
 }
