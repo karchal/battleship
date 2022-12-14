@@ -14,7 +14,7 @@ public class Ship {
         this.type = type;
     }
 
-    public boolean checkIfSunk(){
+    public boolean isSinking(){
         for(Square part: shipParts){
             if (SquareStatus.SHIP.equals(part.getStatus())){
                 return false;
@@ -23,9 +23,20 @@ public class Ship {
         return true;
     }
 
-    public void sunk(){
+    public void sink(){
         for(Square part: shipParts){
             part.setStatus(SquareStatus.SUNK);
         }
+    }
+
+    public List<Square> getShipParts() {
+        return shipParts;
+    }
+
+    public boolean hasSquare(Square square) {
+        for(Square part: shipParts){
+            if (square == part) return true;
+        }
+        return false;
     }
 }

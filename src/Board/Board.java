@@ -1,7 +1,10 @@
 package Board;
 
-public class Board {
+import Player.Player;
+import Ship.Ship;
 
+public class Board {
+    private Player player;
     private Square[][] ocean;
     private int size;
 
@@ -9,7 +12,8 @@ public class Board {
         this.ocean = ocean;
     }
 
-    public Board(){
+    public Board(Player player){
+        this.player = player;
         for(int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){
                 this.ocean[i][j] = new Square(i, j, SquareStatus.EMPTY);
@@ -43,5 +47,28 @@ public class Board {
                 ocean[x-1][y-1].setStatus(SquareStatus.BLOCKED);
             }
         }
+    }
+
+    public Square[][] getOcean() {
+        return ocean;
+    }
+
+
+    public void executeShot(int x, int y) {
+        if (ocean[x][y].getStatus().equals(SquareStatus.EMPTY)) {
+            ocean[x][y].setStatus(SquareStatus.MISSED);
+            player.updatePlayersShips(ocean[x][y]);
+        } else if (ocean[x][y].getStatus().equals(SquareStatus.SHIP)) {
+            ocean[x][y].setStatus(SquareStatus.HIT);
+            player.updatePlayersShips(ocean[x][y]);
+            Ship ship = player.getShipByShipPart(ocean[x][y]);
+            if (ship.isSinking()) {
+                ship.sink();
+            }
+        }
+    }
+
+    public boolean areAllShipsSunk() {
+        return !player.isAlive();
     }
 }

@@ -2,8 +2,8 @@ package Board;
 
 public class Square {
 
-    private int X;
-    private int Y;
+    private final int X;
+    private final int Y;
     SquareStatus status;
 
     public Square(int x, int y, SquareStatus status) {
@@ -22,5 +22,13 @@ public class Square {
 
     public SquareStatus getStatus() {
         return status;
+    }
+
+    public int getX() {
+        return X;
+    }
+
+    public int getY() {
+        return Y;
     }
 }
