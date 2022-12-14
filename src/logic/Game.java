@@ -67,7 +67,6 @@ public class Game {
 
 
     private void playTurn() {
-        currentPlayer.showBoards();
         int[] coords;
         do {
             display.showBoards(getBoard(currentPlayer), enemyBoard);
