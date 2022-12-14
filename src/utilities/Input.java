@@ -1,91 +1,18 @@
 package utilities;
 
 import Board.Direction;
-import java.util.InputMismatchException;
-import java.util.Objects;
-import java.util.Scanner;
 
+public interface Input {
 
-public class Input {
-    private final Display display = new Display();
-    private final Scanner input;
-    private final int[] coordinates = new int[2];
+    int getNumberInput();
 
-    public Input() {
-        input = new Scanner(System.in);
-    }
+    String getStringInput();
 
-    private int getNumberInput(){
-        return input.nextInt();
-    }
+    int getGameMode();
 
-    private String getStringInput(){
-        return input.nextLine();
-    }
+    int[] getCoordinates();
 
-    public int getGameMode() {
-        int mode = 0;
-        try{
-            while (mode<1 || mode >3 ) {
-                display.showMessage("Choose a number between 1-3");
-                mode = getNumberInput();
-            }
-        }
-        catch (InputMismatchException e){
-            display.showMessage("Wrong format! Try again!");
-            input.next();
-            getGameMode();
-        }
-        return mode;
-    }
+    Direction getDirection();
 
-
-    public int[] getCoordinates(){
-        display.showMessage("Enter coordinates");
-        try{
-            String playerCoordinates="";
-            while (playerCoordinates.length()<1) {
-                playerCoordinates = getStringInput();
-            }
-            String columns = "abcdefghijklmnopqrstuvwxyz";
-            String coordinate = playerCoordinates.substring(0, 1).toLowerCase();
-            int row = Integer.parseInt(playerCoordinates.substring(1));
-            coordinates[0] = columns.indexOf(coordinate);
-            coordinates[1] = row - 1;
-            while (!areCoordinatesOnBoard()){
-                display.showMessage("Coordinates out of board! Try again!");
-                getCoordinates();
-            }
-            return coordinates;
-        } catch (NumberFormatException e) {
-            display.showMessage("Wrong input! Try again!");
-            getCoordinates();
-            return null;
-        }
-    }
-
-    private boolean areCoordinatesOnBoard(){
-        return coordinates[0] >= 0 && coordinates[0] <= 10
-                && coordinates[1] >= 0 && coordinates[1] <= 10;
-    }
-
-    public Direction getDirection() {
-        display.showMessage("Enter direction");
-        String direction = "";
-        while (!direction.equals("v") && !direction.equals("h")) {
-            display.showMessage("Type 'h' for horizontal or 'v' for vertical.");
-            direction = getStringInput();
-        }
-        return getDirectionValue(direction);
-    }
-
-    private Direction getDirectionValue(String direction) {
-        for(Direction d: Direction.values()){
-            if (Objects.equals(d.shortcut, direction)){
-                return d;
-            }
-        }
-        return null;
-    }
+    int getOption(int numOfOptions);
 }
-
