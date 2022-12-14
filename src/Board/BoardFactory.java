@@ -18,13 +18,11 @@ public class BoardFactory {
             int[] coordinates;
             Direction direction;
             do {
-                coordinates = getRandomCoordinates();  // losowe generowanie współrzędnych (*)
-                direction = getRandomDirection();  // losowe generowanie kierunku,
+                coordinates = getRandomCoordinates();
+                direction = getRandomDirection();
             } while (!board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength()));
                 board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
             }
-
-        //odblokowanie komórek wokół statków
         board.unblockFieldsAround();
         return board;
     }
@@ -32,6 +30,7 @@ public class BoardFactory {
     public Board manualPlacement(Player player) {
         Board board = new Board(player);
         Square[][] ocean = board.getOcean();
+        //input should be of the same instance as input created in main
         ConsoleInput input = new ConsoleInput(new ConsoleDisplay());
         for (ShipType shipType: ShipType.values()){
             int[] coordinates;

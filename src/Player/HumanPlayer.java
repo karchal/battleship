@@ -3,6 +3,7 @@ package Player;
 import Board.Square;
 import Board.SquareStatus;
 import Ship.Ship;
+import utilities.ConsoleDisplay;
 import utilities.ConsoleInput;
 
 import java.util.ArrayList;
@@ -14,7 +15,8 @@ public class HumanPlayer implements Player {
 
 
     public int[] getShotCoors() {
-        ConsoleInput input = new ConsoleInput();
+
+        ConsoleInput input = new ConsoleInput(new ConsoleDisplay());
         return input.getCoordinates();
     }
 
