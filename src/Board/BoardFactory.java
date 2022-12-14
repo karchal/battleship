@@ -7,6 +7,8 @@ import utilities.Input;
 
 import java.util.Random;
 
+import utilities.ConsoleDisplay;
+import utilities.ConsoleInput;
 
 public class BoardFactory {
 
@@ -29,7 +31,8 @@ public class BoardFactory {
 
     public Board manualPlacement(Player player) {
         Board board = new Board(player);
-        Input input = new Input();
+        Square[][] ocean = board.getOcean();
+        ConsoleInput input = new ConsoleInput(new ConsoleDisplay());
         for (ShipType shipType: ShipType.values()){
             int[] coordinates;
             Direction direction;

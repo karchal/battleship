@@ -5,6 +5,8 @@ import Board.BoardFactory;
 import Player.AiPlayer;
 import Player.HumanPlayer;
 import Player.Player;
+import utilities.ConsoleDisplay;
+import utilities.ConsoleInput;
 import utilities.Display;
 import utilities.Input;
 
@@ -15,10 +17,13 @@ public class Game {
     private Board board1;
     private Board board2;
     private Board enemyBoard;
-    private final Display display = new Display();
-    private final Input input = new Input();
+    private Display display;
+    private Input input;
 
-
+    public Game(Display display, Input input) {
+        this.display = display;
+        this.input = input;
+    }
 
     public void play() {
         currentPlayer = player1;
