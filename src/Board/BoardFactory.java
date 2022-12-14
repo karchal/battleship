@@ -1,14 +1,44 @@
 package Board;
 
+import Player.Player;
+import Ship.Ship;
+import Ship.ShipType;
+
+import java.util.List;
+
 public class BoardFactory {
-    Board board;
 
-    public void randomPlacement() {
 
+    public Board randomPlacement(Player player) {
+        Board board = new Board(player);
+        Square[][] ocean = board.getOcean();
+        for (ShipType shipType: ShipType.values()){
+            // losowe generowanie współrzędnych (*)
+            // losowe generowanie kierunku,
+            // sprawdzenie czy położenie jest ok, jeśli nie wracamy do (*)
+            // zmiana statusu konkretnych komórek oceanu z EMPTY na SHIP
+            // stworzenie nowego statku złożonego z tych komórek oceanu i typu shipType
+            // dodanie statku do listy playera (metoda player.addShip(ship))
+            // zablokowanie komórek wokół statku
+        }
+        //odblokowanie komórek wokół statków
+        return board;
     }
 
-    public void manualPlacement() {
-
+    public Board manualPlacement(Player player) {
+        Board board = new Board(player);
+        Square[][] ocean = board.getOcean();
+        for (ShipType shipType: ShipType.values()){
+            // pobieranie współrzędnych (*)
+            // pobieranie kierunku,
+            // sprawdzenie czy położenie jest ok, jeśli nie wracamy do (*)
+            // zmiana statusu konkretnych komórek oceanu z EMPTY na SHIP
+            // stworzenie nowego statku złożonego z tych komórek oceanu i typu shipType
+            // dodanie statku do listy playera (metoda player.addShip(ship))
+            // zablokowanie komórek wokół statku
+        }
+        //odblokowanie komórek wokół statków
+        return board;
     }
 
 }
