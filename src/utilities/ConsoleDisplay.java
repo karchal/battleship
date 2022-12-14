@@ -19,6 +19,11 @@ public class ConsoleDisplay implements Display {
 
     }
 
+    //
+    public void showBoard(Board board){
+
+    }
+
     public void showMenu(){
         System.out.println("Choose one of the options:\n" +
                 "1. Start new game\n" +

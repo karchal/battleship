@@ -2,6 +2,7 @@ package Board;
 
 import Player.Player;
 import Ship.ShipType;
+import utilities.ConsoleDisplay;
 import utilities.ConsoleInput;
 
 public class BoardFactory {
@@ -27,7 +28,7 @@ public class BoardFactory {
     public Board manualPlacement(Player player) {
         Board board = new Board(player);
         Square[][] ocean = board.getOcean();
-        ConsoleInput input = new ConsoleInput();
+        ConsoleInput input = new ConsoleInput(new ConsoleDisplay());
         for (ShipType shipType: ShipType.values()){
             // pobieranie współrzędnych (*)
             int[] coordinates = input.getCoordinates();
