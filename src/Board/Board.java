@@ -25,10 +25,25 @@ public class Board {
         return ocean[i][j];
     }
 
-    public boolean isPlacementOk(int row, int col){
-        return  ocean[row][col].getStatus() == SquareStatus.EMPTY && // Is square empty?
-                0 <= col && col < size &&
-                0 <= row && row < size; // Is on board?
+    public boolean isPlacementOk(int row, int col, Direction direction, int shipLength){
+        if (direction == Direction.HORIZONTAL ) {
+            if (col + shipLength >= size) return false;
+            for (int i = 0; i < shipLength; i++) {
+                if (ocean[row][col + i].getStatus() == SquareStatus.SHIP
+                        || ocean[row][col + i].getStatus() == SquareStatus.BLOCKED) {
+                    return false;
+                }
+            }
+        } else {
+            if (row + shipLength >= size) return false;
+            for (int i = 0; i < shipLength; i++) {
+                if (ocean[row + i][col].getStatus() == SquareStatus.SHIP
+                        || ocean[row + i][col].getStatus() == SquareStatus.BLOCKED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public void blockFieldsAround(int x, int y, SquareStatus status){
