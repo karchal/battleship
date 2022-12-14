@@ -2,8 +2,8 @@ package Board;
 
 public class Square {
 
-    private final int X;
-    private final int Y;
+    public final int X;
+    public final int Y;
     SquareStatus status;
 
     public Square(int x, int y, SquareStatus status) {
@@ -12,7 +12,7 @@ public class Square {
         this.status = status;
     }
 
-    public char getStatusCharacter() {
+    public String getStatusCharacter() {
         return status.getCharacter();
     }
 
@@ -31,4 +31,9 @@ public class Square {
     public int getY() {
         return Y;
     }
+
+    public String toString() {
+        return getStatusCharacter();
+    }
+
 }

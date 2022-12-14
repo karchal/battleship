@@ -16,11 +16,11 @@ public class Input {
         input = new Scanner(System.in);
     }
 
-    public int getNumberInput(){
+    private int getNumberInput(){
         return input.nextInt();
     }
 
-    public String getStringInput(){
+    private String getStringInput(){
         return input.nextLine();
     }
 
@@ -64,7 +64,7 @@ public class Input {
         }
     }
 
-    public boolean areCoordinatesOnBoard(){
+    private boolean areCoordinatesOnBoard(){
         return coordinates[0] >= 0 && coordinates[0] <= 10
                 && coordinates[1] >= 0 && coordinates[1] <= 10;
     }

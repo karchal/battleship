@@ -5,8 +5,8 @@ import Ship.Ship;
 
 public class Board {
     private Player player;
-    private Square[][] ocean;
-    private int size;
+    private Square[][] ocean=new Square[10][10];
+    public int size=10;
 
     public void setOcean(Square[][] ocean) {
         this.ocean = ocean;

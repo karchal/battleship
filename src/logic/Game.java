@@ -23,11 +23,11 @@ public class Game {
     public void play() {
         currentPlayer = player1;
         enemyBoard = board2;
-        while(currentPlayer.isAlive()) {
+//        while(currentPlayer.isAlive()) {
             playTurn();
             changePlayer();
             changeBoard();
-        }
+//        }
     }
 
     public void start(){
@@ -61,7 +61,7 @@ public class Game {
     private void playTurn() {
         int[] coords;
         do {
-            display.showBoards(getBoard(currentPlayer), enemyBoard);
+           display.showBoards(getBoard(currentPlayer), enemyBoard);
             coords = currentPlayer.getShotCoors();
             enemyBoard.executeShot(coords[0], coords[1]);
             currentPlayer.addShot(enemyBoard.getSquare(coords[0], coords[1]));

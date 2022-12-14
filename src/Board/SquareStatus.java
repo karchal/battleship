@@ -1,15 +1,15 @@
 package Board;
 
 public enum SquareStatus{
-    EMPTY(' '), SHIP('X'), HIT('H'), MISSED('-'), SUNK('S'), BLOCKED('b');
+    EMPTY("\uD83C\uDF0A"), SHIP("\uD83D\uDEA2"), HIT("\uD83D\uDD25"), MISSED("❌"), SUNK("\uD83D\uDC80"), BLOCKED("⛔");
 
-    private char character;
+    private String character;
 
-    SquareStatus(char character) {
+    SquareStatus(String character) {
         this.character = character;
     }
 
-    public char getCharacter() {
+    public String getCharacter() {
         return character;
     }
 
