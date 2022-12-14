@@ -91,7 +91,7 @@ public class Board {
             player.updatePlayersShips(ocean[x][y]);
             Ship ship = player.getShipByShipPart(ocean[x][y]);
             if (ship.isSinking()) {
-                ship.sink();
+                ship.sunk();
             }
         }
     }
