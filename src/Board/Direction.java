@@ -1,5 +1,6 @@
 package Board;
 
+import java.util.Random;
 public enum Direction {
     VERTICAL("v"), HORIZONTAL("h");
 
@@ -8,4 +9,5 @@ public enum Direction {
     Direction(String shortcut) {
         this.shortcut = shortcut;
     }
+
 }

@@ -6,5 +6,6 @@ public class Battleship {
         game.start();
         game.play();
         game.end();
+
     }
 }
