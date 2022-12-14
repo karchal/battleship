@@ -11,10 +11,12 @@ import java.util.List;
 
 public abstract class Player {
 
-    List<Ship> ships = new ArrayList<>();
-    List<Square> shots = new ArrayList<>();
+    protected List<Ship> ships = new ArrayList<>();
+    protected List<Square> shots = new ArrayList<>();
 
     public abstract int[] getShotCoors();
+
+    public abstract String getName();
 
     public boolean isAlive() {
         for(Ship ship: ships){
