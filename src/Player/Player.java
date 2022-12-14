@@ -11,8 +11,6 @@ public interface Player {
 
     boolean isAlive();
 
-    void showBoards();
-
     List<Ship> getShips();
 
     void updatePlayersShips(Square square);

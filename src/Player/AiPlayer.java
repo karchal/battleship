@@ -27,10 +27,6 @@ public class AiPlayer implements Player {
         return false;
     }
 
-    @Override
-    public void showBoards() {
-
-    }
 
     @Override
     public List<Ship> getShips() {

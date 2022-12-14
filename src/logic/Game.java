@@ -32,21 +32,13 @@ public class Game {
 
     public void start(){
         display.showModes();
-        int mode = getMode();
+        int mode = input.getGameMode();
         setUpPlayers(mode);
         board1 = createBoard(player1);
         board2 = createBoard(player2);
     }
 
-    private int getMode() {
-        while(true) {
-            int mode = input.getInt();
-            if (mode >= 1 && mode <= 3) {
-                return mode;
-            }
-            display.showMessage("Choose a number between 1-3");
-        }
-    }
+
 
     private void setUpPlayers(int mode) {
         switch (mode) {

@@ -3,6 +3,7 @@ package Player;
 import Board.Square;
 import Board.SquareStatus;
 import Ship.Ship;
+import utilities.Input;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,8 @@ public class HumanPlayer implements Player {
 
 
     public int[] getShotCoors() {
-        //return player input
-        int[] coords = {0,0};
-        return coords;
+        Input input = new Input();
+        return input.getCoordinates();
     }
 
     public boolean isAlive() {
@@ -26,10 +26,6 @@ public class HumanPlayer implements Player {
             }
         }
         return false;
-    }
-
-    public void showBoards() {
-        //moim zdaniem to nie powinno być w tej klasie
     }
 
     public List<Ship> getShips() {
