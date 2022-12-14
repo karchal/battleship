@@ -1,13 +1,8 @@
 package Board;
 
 import Player.Player;
-import Ship.Ship;
 import Ship.ShipType;
-import utilities.Input;
-
-import java.util.List;
-
-import static Board.SquareStatus.BLOCKED;
+import utilities.ConsoleInput;
 
 public class BoardFactory {
     Board board;
@@ -32,7 +27,7 @@ public class BoardFactory {
     public Board manualPlacement(Player player) {
         Board board = new Board(player);
         Square[][] ocean = board.getOcean();
-        Input input = new Input();
+        ConsoleInput input = new ConsoleInput();
         for (ShipType shipType: ShipType.values()){
             // pobieranie współrzędnych (*)
             int[] coordinates = input.getCoordinates();
