@@ -2,6 +2,12 @@ package Board;
 
 import Player.Player;
 import Ship.Ship;
+import Ship.ShipType;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static Board.SquareStatus.BLOCKED;
 
 public class Board {
     private Player player;
@@ -25,15 +31,47 @@ public class Board {
         return ocean[i][j];
     }
 
-    public boolean isPlacementOk(int row, int col){
-        return  ocean[row][col].getStatus() == SquareStatus.EMPTY && // Is square empty?
-                0 <= col && col < size &&
-                0 <= row && row < size; // Is on board?
+    public boolean isPlacementOk(int row, int col, Direction direction, int shipLength){
+        if (direction == Direction.HORIZONTAL ) {
+            if (col + shipLength >= size) return false;
+            for (int i = 0; i < shipLength; i++) {
+                if (ocean[row][col + i].getStatus() == SquareStatus.SHIP
+                        || ocean[row][col + i].getStatus() == SquareStatus.BLOCKED) {
+                    return false;
+                }
+            }
+        } else {
+            if (row + shipLength >= size) return false;
+            for (int i = 0; i < shipLength; i++) {
+                if (ocean[row + i][col].getStatus() == SquareStatus.SHIP
+                        || ocean[row + i][col].getStatus() == SquareStatus.BLOCKED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    public void blockFieldsAround(int x, int y, SquareStatus status){
-        ocean[x][y].setStatus(status);
-        if(status == SquareStatus.SHIP){
+    public void placeShip(int row, int col, Direction direction, int shipLength, ShipType type){
+        List<Square> shipParts = new ArrayList<>();
+        if (direction == Direction.HORIZONTAL ) {
+            for (int i = 0; i < shipLength; i++) {
+                ocean[row][col + i].setStatus(SquareStatus.SHIP);
+                shipParts.add(ocean[row][col + i]);
+                blockFieldsAround(row, col + i);
+            }
+        } else {
+            for (int i = 0; i < shipLength; i++) {
+                ocean[row + i][col].setStatus(SquareStatus.SHIP);
+                shipParts.add(ocean[row + i][col]);
+                blockFieldsAround(row + i, col);
+            }
+        }
+        player.addShip(new Ship(shipParts, type));
+    }
+
+    public void blockFieldsAround(int x, int y){
+        if(ocean[x][y].getStatus() == SquareStatus.SHIP){
             if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
@@ -63,7 +101,7 @@ public class Board {
             player.updatePlayersShips(ocean[x][y]);
             Ship ship = player.getShipByShipPart(ocean[x][y]);
             if (ship.isSinking()) {
-                ship.sink();
+                ship.sunk();
             }
         }
     }
@@ -71,4 +109,17 @@ public class Board {
     public boolean areAllShipsSunk() {
         return !player.isAlive();
     }
-}
+
+    public void unblockFieldsAround() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++){
+                if (ocean[i][j].getStatus() == BLOCKED) {
+                    ocean[i][j].setStatus(SquareStatus.EMPTY);
+                }
+            }
+        }
+    }
+
+    }
+
+
