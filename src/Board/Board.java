@@ -27,27 +27,55 @@ public class Board {
         return ocean[i][j];
     }
 
-    public boolean isPlacementOk(int row, int col){
-        return  ocean[row][col].getStatus() == SquareStatus.EMPTY && // Is square empty?
-                0 <= col && col < size &&
-                0 <= row && row < size; // Is on board?
+    public boolean isPlacementOk(int row, int col, Direction direction, int shipLength){
+        if (direction == Direction.HORIZONTAL ) {
+            if (col + shipLength >= size) return false;
+            for (int i = 0; i < shipLength; i++) {
+                if (ocean[row][col + i].getStatus() == SquareStatus.SHIP
+                        || ocean[row][col + i].getStatus() == SquareStatus.BLOCKED) {
+                    return false;
+                }
+            }
+        } else {
+            if (row + shipLength >= size) return false;
+            for (int i = 0; i < shipLength; i++) {
+                if (ocean[row + i][col].getStatus() == SquareStatus.SHIP
+                        || ocean[row + i][col].getStatus() == SquareStatus.BLOCKED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void placeShip(int row, int col, Direction direction, int shipLength){
+        if (direction == Direction.HORIZONTAL ) {
+            for (int i = 0; i < shipLength; i++) {
+                ocean[row][col + i].setStatus(SquareStatus.SHIP);
+            }
+        } else {
+            for (int i = 0; i < shipLength; i++) {
+                ocean[row + i][col].setStatus(SquareStatus.SHIP);
+            }
+        }
     }
 
     public void blockFieldsAround(int x, int y){
-
-        if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
+        if(ocean[x][y].getStatus() == SquareStatus.SHIP){
+            if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
-        if(x > 0 && y < size - 1 && ocean[x-1][y+1].getStatus().equals(SquareStatus.EMPTY)){
+            if(x > 0 && y < size - 1 && ocean[x-1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x-1][y+1].setStatus(SquareStatus.BLOCKED);
             }
-        if(x < size - 1 && y > 0 && ocean[x+1][y-1].getStatus().equals(SquareStatus.EMPTY)){
+            if(x < size - 1 && y > 0 && ocean[x+1][y-1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y-1].setStatus(SquareStatus.BLOCKED);
             }
-        if(x > 0 && y > 0 && ocean[x-1][y-1].getStatus().equals(SquareStatus.EMPTY)){
+            if(x > 0 && y > 0 && ocean[x-1][y-1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x-1][y-1].setStatus(SquareStatus.BLOCKED);
             }
         }
+    }
 
     public Square[][] getOcean() {
         return ocean;
