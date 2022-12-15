@@ -19,4 +19,5 @@ public interface Display {
 
     void showHighScores(Map<String, Integer> topFiveScores);
 
+    public void clearConsole();
 }

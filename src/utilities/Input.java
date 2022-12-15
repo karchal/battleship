@@ -15,4 +15,7 @@ public interface Input {
     Direction getDirection();
 
     int getOption(int numOfOptions);
+
+    public void getAnyKey();
+
 }

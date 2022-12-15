@@ -102,5 +102,10 @@ public class ConsoleInput implements Input {
             display.showMessage("Enter a number between 1 and " + numOfOptions);
         }
     }
+    public void getAnyKey(){
+        System.out.println("Press any key to continue");
+        try{System.in.read();}
+        catch(Exception e){}
+    }
 }
 

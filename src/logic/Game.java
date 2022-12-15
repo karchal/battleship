@@ -64,11 +64,13 @@ public class Game {
     private void playTurn() {
         int[] coords;
         do {
+            display.clearConsole(); // CZY NA PEWNO W TYM MIEJSCU?
             display.showBoards(getBoard(currentPlayer), enemyBoard);
             coords = currentPlayer.getShotCoords();
             enemyBoard.executeShot(coords[0], coords[1]);
             currentPlayer.addShot(enemyBoard.getSquare(coords[0], coords[1]));
         } while (currentPlayer.hasNextShot() && !enemyBoard.areAllShipsSunk());
+        input.getAnyKey();
     }
 
     private Board getBoard(Player player) {

@@ -4,6 +4,7 @@ import Board.Board;
 
 import java.util.Map;
 import Board.SquareStatus;
+import java.io.IOException;
 public class ConsoleDisplay implements Display {
 
     public void showModes() {
@@ -16,40 +17,40 @@ public class ConsoleDisplay implements Display {
         System.out.println(message);
     }
 
-    public void showBoards(Board playerBoard, Board enemyBoard){
-        int boardsCount =0;
+    public void showBoards(Board playerBoard, Board enemyBoard) {
+        int boardsCount = 0;
         StringBuilder displayBoard = new StringBuilder();
         char[] columns = "ABCDEFGHIJ".toCharArray();
         displayBoard.append("    ");
-        while (boardsCount!=2 ) {
-            for (int i = 0; i< playerBoard.SIZE; i++) {
-                if (i !=4) {
+        while (boardsCount != 2) {
+            for (int i = 0; i < playerBoard.SIZE; i++) {
+                if (i != 4) {
                     displayBoard.append(i + 1).append("   ");
                 } else {
                     displayBoard.append(i + 1).append("    ");
                 }
             }
             boardsCount++;
-            if (boardsCount==1){
+            if (boardsCount == 1) {
                 displayBoard.append("|     ");
             }
         }
         displayBoard.append("\n");
 
-        for (int i = 0; i< playerBoard.SIZE; i++){
+        for (int i = 0; i < playerBoard.SIZE; i++) {
             displayBoard.append(columns[i]).append("  ");
-            for (int j = 0; j<playerBoard.SIZE *2+6; j++){
-                if (j<10) {
+            for (int j = 0; j < playerBoard.SIZE * 2 + 6; j++) {
+                if (j < 10) {
                     displayBoard.append(playerBoard.getOcean()[i][j]).append("  ");
-                } else if (j>15){
-                    if(enemyBoard.getOcean()[i][j-16].getStatus().equals(SquareStatus.SHIP)){
-                      displayBoard.append(SquareStatus.EMPTY.getSymbol()).append("  ");
+                } else if (j > 15) {
+                    if (enemyBoard.getOcean()[i][j - 16].getStatus().equals(SquareStatus.SHIP)) {
+                        displayBoard.append(SquareStatus.EMPTY.getSymbol()).append("  ");
                     } else {
                         displayBoard.append(enemyBoard.getOcean()[i][j - 16]).append("  ");
                     }
-                } else if (j==11){
+                } else if (j == 11) {
                     displayBoard.append(" | ");
-                } else if (j==13){
+                } else if (j == 13) {
                     displayBoard.append(columns[i]).append("  ");
                 }
             }
@@ -58,19 +59,19 @@ public class ConsoleDisplay implements Display {
         System.out.println(displayBoard);
     }
 
-    public void showBoard(Board board){
+    public void showBoard(Board board) {
         StringBuilder displayBoard = new StringBuilder();
         char[] columns = "ABCDEFGHIJ".toCharArray();
         displayBoard.append("    ");
-        for (int i = 0; i< board.SIZE; i++) {
-            if (i !=4) {
+        for (int i = 0; i < board.SIZE; i++) {
+            if (i != 4) {
                 displayBoard.append(i + 1).append("   ");
             } else {
                 displayBoard.append(i + 1).append("    ");
             }
         }
         displayBoard.append("\n");
-        for (int i = 0; i< board.SIZE; i++) {
+        for (int i = 0; i < board.SIZE; i++) {
             displayBoard.append(columns[i]).append("  ");
             for (int j = 0; j < board.SIZE; j++) {
                 displayBoard.append(board.getOcean()[i][j]).append("  ");
@@ -80,7 +81,7 @@ public class ConsoleDisplay implements Display {
         System.out.println(displayBoard);
     }
 
-    public void showMenu(){
+    public void showMenu() {
         System.out.println("Choose one of the options:\n" +
                 "1. Start new game\n" +
                 "2. Display high scores\n" +
@@ -91,5 +92,8 @@ public class ConsoleDisplay implements Display {
         topScores.entrySet()
                 .stream()
                 .forEach(System.out::println);
+    }
+    public void clearConsole() {
+        System.out.println(System.lineSeparator().repeat(60));
     }
 }

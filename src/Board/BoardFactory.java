@@ -33,6 +33,7 @@ public class BoardFactory {
                     isPossibleToPlaceShip = true;
                 } else { display.showMessage("It's impossible to place your ship here");}
             }
+            display.clearConsole();
             }
         board.unblockFieldsAround();
         return board;
@@ -54,6 +55,7 @@ public class BoardFactory {
                     isPossibleToPlaceShip = true;
                 } else { display.showMessage("It's impossible to place your ship here");}
             }
+            display.clearConsole();
         }
         board.unblockFieldsAround();
         return board;
