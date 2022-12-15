@@ -59,7 +59,25 @@ public class ConsoleDisplay implements Display {
     }
 
     public void showBoard(Board board){
-
+        StringBuilder displayBoard = new StringBuilder();
+        char[] columns = "ABCDEFGHIJ".toCharArray();
+        displayBoard.append("    ");
+        for (int i = 0; i< board.SIZE; i++) {
+            if (i !=4) {
+                displayBoard.append(i + 1).append("   ");
+            } else {
+                displayBoard.append(i + 1).append("    ");
+            }
+        }
+        displayBoard.append("\n");
+        for (int i = 0; i< board.SIZE; i++) {
+            displayBoard.append(columns[i]).append("  ");
+            for (int j = 0; j < board.SIZE; j++) {
+                displayBoard.append(board.getOcean()[i][j]).append("  ");
+            }
+            displayBoard.append("\n");
+        }
+        System.out.println(displayBoard);
     }
 
     public void showMenu(){

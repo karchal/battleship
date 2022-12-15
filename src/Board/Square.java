@@ -7,7 +7,7 @@ public class Square {
     private final int X;
     private final int Y;
 
-    private boolean areShipsHidden;
+    private final boolean areShipsHidden;
     SquareStatus status;
 
     public Square(int x, int y, SquareStatus status) {
