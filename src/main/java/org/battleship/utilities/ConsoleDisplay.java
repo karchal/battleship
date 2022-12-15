@@ -84,8 +84,10 @@ public class ConsoleDisplay implements Display {
     }
 
     public void showHighScores(Map<String, Integer> topScores) {
+        System.out.println("\nTOP SCORES:");
         topScores.entrySet()
                 .forEach(System.out::println);
+        System.out.println(" ");
     }
     public void clearConsole() {
         System.out.println(System.lineSeparator().repeat(60));
