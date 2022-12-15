@@ -1,16 +1,14 @@
-package utilities;
+package main.java.org.battleship.utilities;
 
-import Board.Board;
+import main.java.org.battleship.Board.Board;
+import main.java.org.battleship.square.SquareStatus;
 
 import java.util.Map;
-import Board.SquareStatus;
-import java.io.IOException;
+
 public class ConsoleDisplay implements Display {
 
     public void showModes() {
-        System.out.println("1. Player vs player\n" +
-                "2: Player vs computer\n" +
-                "3: Computer vs computer");
+        System.out.println("1. Player vs player\n2: Player vs computer\n3: Computer vs computer");
     }
 
     public void showMessage(String message) {
@@ -23,7 +21,7 @@ public class ConsoleDisplay implements Display {
         char[] columns = "ABCDEFGHIJ".toCharArray();
         displayBoard.append("    ");
         while (boardsCount != 2) {
-            for (int i = 0; i < playerBoard.SIZE; i++) {
+            for (int i = 0; i < Board.SIZE; i++) {
                 if (i != 4) {
                     displayBoard.append(i + 1).append("   ");
                 } else {
@@ -37,9 +35,9 @@ public class ConsoleDisplay implements Display {
         }
         displayBoard.append("\n");
 
-        for (int i = 0; i < playerBoard.SIZE; i++) {
+        for (int i = 0; i < Board.SIZE; i++) {
             displayBoard.append(columns[i]).append("  ");
-            for (int j = 0; j < playerBoard.SIZE * 2 + 6; j++) {
+            for (int j = 0; j < Board.SIZE * 2 + 6; j++) {
                 if (j < 10) {
                     displayBoard.append(playerBoard.getOcean()[i][j]).append("  ");
                 } else if (j > 15) {
@@ -63,7 +61,7 @@ public class ConsoleDisplay implements Display {
         StringBuilder displayBoard = new StringBuilder();
         char[] columns = "ABCDEFGHIJ".toCharArray();
         displayBoard.append("    ");
-        for (int i = 0; i < board.SIZE; i++) {
+        for (int i = 0; i < Board.SIZE; i++) {
             if (i != 4) {
                 displayBoard.append(i + 1).append("   ");
             } else {
@@ -71,9 +69,9 @@ public class ConsoleDisplay implements Display {
             }
         }
         displayBoard.append("\n");
-        for (int i = 0; i < board.SIZE; i++) {
+        for (int i = 0; i < Board.SIZE; i++) {
             displayBoard.append(columns[i]).append("  ");
-            for (int j = 0; j < board.SIZE; j++) {
+            for (int j = 0; j < Board.SIZE; j++) {
                 displayBoard.append(board.getOcean()[i][j]).append("  ");
             }
             displayBoard.append("\n");
@@ -82,15 +80,11 @@ public class ConsoleDisplay implements Display {
     }
 
     public void showMenu() {
-        System.out.println("Choose one of the options:\n" +
-                "1. Start new game\n" +
-                "2. Display high scores\n" +
-                "3. Exit");
+        System.out.println("Choose one of the options:\n1. Start new game\n2. Display high scores\n3. Exit");
     }
 
     public void showHighScores(Map<String, Integer> topScores) {
         topScores.entrySet()
-                .stream()
                 .forEach(System.out::println);
     }
     public void clearConsole() {

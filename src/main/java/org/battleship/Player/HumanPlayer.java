@@ -1,7 +1,7 @@
-package Player;
+package main.java.org.battleship.Player;
 
-import utilities.Display;
-import utilities.Input;
+import main.java.org.battleship.utilities.Display;
+import main.java.org.battleship.utilities.Input;
 
 import java.util.HashSet;
 

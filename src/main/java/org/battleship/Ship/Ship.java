@@ -1,13 +1,13 @@
-package Ship;
+package main.java.org.battleship.Ship;
 
-import Board.Square;
-import Board.SquareStatus;
+import main.java.org.battleship.square.Square;
+import main.java.org.battleship.square.SquareStatus;
 
 import java.util.List;
 
 public class Ship {
-    private List<Square> shipParts;
-    private ShipType type;
+    private final List<Square> shipParts;
+    private final ShipType type;
 
     public Ship(List<Square> squares, ShipType type) {
         this.shipParts = squares;

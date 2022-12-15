@@ -1,6 +1,7 @@
-package utilities;
+package main.java.org.battleship.utilities;
 
-import Board.Direction;
+import main.java.org.battleship.Board.Direction;
+
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public class ConsoleInput implements Input {
 
-    private ConsoleDisplay display;
+    private final ConsoleDisplay display;
     private final Scanner input = new Scanner(System.in);
     private final int[] coordinates = new int[2];
 

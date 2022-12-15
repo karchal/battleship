@@ -1,4 +1,4 @@
-package Board;
+package main.java.org.battleship.square;
 
 public class Square {
     private static final int POINTS_FOR_HIT_SQUARE = 1;

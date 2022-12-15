@@ -1,4 +1,4 @@
-package Ship;
+package main.java.org.battleship.Ship;
 
 public enum ShipType{
      CARRIER(5), CRUISER(4), BATTLESHIP(3), SUBMARINE(3), DESTROYER(2);

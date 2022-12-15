@@ -1,8 +1,8 @@
-package Player;
+package main.java.org.battleship.Player;
 
-import Board.Square;
-import Board.SquareStatus;
-import Ship.Ship;
+import main.java.org.battleship.Ship.Ship;
+import main.java.org.battleship.square.Square;
+import main.java.org.battleship.square.SquareStatus;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,10 +25,6 @@ public abstract class Player {
             }
         }
         return false;
-    }
-
-    public List<Ship> getShips() {
-        return ships;
     }
 
     public void updatePlayersShips(Square square) {

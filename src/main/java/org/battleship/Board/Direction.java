@@ -1,6 +1,5 @@
-package Board;
+package main.java.org.battleship.Board;
 
-import java.util.Random;
 public enum Direction {
     VERTICAL("v"), HORIZONTAL("h");
 

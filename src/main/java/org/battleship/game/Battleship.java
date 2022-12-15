@@ -1,7 +1,8 @@
-import Player.Player;
-import logic.Game;
-import utilities.Display;
-import utilities.Input;
+package main.java.org.battleship.game;
+
+import main.java.org.battleship.utilities.Display;
+import main.java.org.battleship.Player.Player;
+import main.java.org.battleship.utilities.Input;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,12 +1,13 @@
-package Board;
+package main.java.org.battleship.Board;
 
-import Player.Player;
-import Ship.ShipType;
+
+import main.java.org.battleship.Ship.ShipType;
+import main.java.org.battleship.utilities.Display;
+import main.java.org.battleship.utilities.Input;
+import main.java.org.battleship.Player.Player;
 
 import java.util.Random;
 
-import utilities.Display;
-import utilities.Input;
 
 public class BoardFactory {
     private final Display display;
@@ -22,14 +23,14 @@ public class BoardFactory {
         for (ShipType shipType: ShipType.values()){
             int[] coordinates;
             Direction direction;
-            Boolean isPossibleToPlaceShip = false;
+            boolean isPossibleToPlaceShip = false;
             while (!isPossibleToPlaceShip){
                 coordinates = getRandomCoordinates();
                 direction = getRandomDirection();
                 if (board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength())){
                     board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
                     isPossibleToPlaceShip = true;
-                } else { display.showMessage("It's impossible to place your ship here");}
+                }
             }
             display.clearConsole();
             }
@@ -44,7 +45,7 @@ public class BoardFactory {
             display.showBoard(board);
             display.showMessage("Enter coordinates of the first (left-up) ship part");
             int[] coordinates;
-            Boolean isPossibleToPlaceShip = false;
+            boolean isPossibleToPlaceShip = false;
             Direction direction;
             while (!isPossibleToPlaceShip) {
                 coordinates = input.getCoordinates();

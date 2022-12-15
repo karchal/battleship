@@ -1,12 +1,12 @@
-package logic;
+package main.java.org.battleship.game;
 
-import Board.Board;
-import Board.BoardFactory;
-import Player.AiPlayer;
-import Player.HumanPlayer;
-import Player.Player;
-import utilities.Display;
-import utilities.Input;
+import main.java.org.battleship.Board.Board;
+import main.java.org.battleship.Board.BoardFactory;
+import main.java.org.battleship.Player.AiPlayer;
+import main.java.org.battleship.Player.HumanPlayer;
+import main.java.org.battleship.Player.Player;
+import main.java.org.battleship.utilities.Display;
+import main.java.org.battleship.utilities.Input;
 
 public class Game {
     private Player player1;
@@ -66,12 +66,12 @@ public class Game {
     private void playTurn() {
         int[] coords;
         do {
-            display.clearConsole(); // CZY NA PEWNO W TYM MIEJSCU? ODP. WYGLĄDA NA TO, ŻE TAK
+            display.clearConsole();
             display.showBoards(getBoard(currentPlayer), enemyBoard);
             coords = currentPlayer.getShotCoords();
             enemyBoard.executeShot(coords[0], coords[1]);
             currentPlayer.addShot(enemyBoard.getSquare(coords[0], coords[1]));
-            display.clearConsole(); // I TU MOŻE TEŻ
+            display.clearConsole();
             display.showBoards(getBoard(currentPlayer), enemyBoard);
         } while (currentPlayer.hasNextShot() && !enemyBoard.areAllShipsSunk());
         input.getAnyKey();

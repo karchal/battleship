@@ -1,6 +1,6 @@
-package utilities;
+package main.java.org.battleship.utilities;
 
-import Board.Direction;
+import main.java.org.battleship.Board.Direction;
 
 public interface Input {
 
@@ -16,6 +16,6 @@ public interface Input {
 
     int getOption(int numOfOptions);
 
-    public void getAnyKey();
+    void getAnyKey();
 
 }

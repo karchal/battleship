@@ -1,22 +1,21 @@
-package Board;
+package main.java.org.battleship.Board;
 
-import Player.Player;
-import Ship.Ship;
-import Ship.ShipType;
+import main.java.org.battleship.Ship.Ship;
+import main.java.org.battleship.Player.Player;
+import main.java.org.battleship.Ship.ShipType;
 
+import main.java.org.battleship.square.Square;
+import main.java.org.battleship.square.SquareStatus;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Board.SquareStatus.BLOCKED;
+import static main.java.org.battleship.square.SquareStatus.BLOCKED;
 
 public class Board {
-    private Player player;
-    private Square[][] ocean=new Square[10][10];
+    private final Player player;
+    private final Square[][] ocean=new Square[10][10];
     public static final int SIZE = 10;
 
-    public void setOcean(Square[][] ocean) {
-        this.ocean = ocean;
-    }
 
     public Board(Player player){
         this.player = player;

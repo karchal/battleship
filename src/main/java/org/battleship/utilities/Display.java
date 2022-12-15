@@ -1,8 +1,7 @@
-package utilities;
+package main.java.org.battleship.utilities;
 
-import Board.Board;
+import main.java.org.battleship.Board.Board;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public interface Display {
@@ -15,9 +14,9 @@ public interface Display {
 
     void showBoards(Board playerBoard, Board enemyBoard);
 
-    public void showBoard(Board board); // we will use it during board creation
+    void showBoard(Board board); // we will use it during board creation
 
     void showHighScores(Map<String, Integer> topFiveScores);
 
-    public void clearConsole();
+    void clearConsole();
 }
