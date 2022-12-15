@@ -84,6 +84,18 @@ public class Board {
             if(x > 0 && y > 0 && ocean[x-1][y-1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x-1][y-1].setStatus(SquareStatus.BLOCKED);
             }
+            if(y < SIZE - 1 && ocean[x][y+1].getStatus().equals(SquareStatus.EMPTY)){
+                ocean[x][y+1].setStatus(SquareStatus.BLOCKED);
+            }
+            if(y > 0 && ocean[x][y-1].getStatus().equals(SquareStatus.EMPTY)){
+                ocean[x][y-1].setStatus(SquareStatus.BLOCKED);
+            }
+            if(x < SIZE - 1 && ocean[x+1][y].getStatus().equals(SquareStatus.EMPTY)){
+                ocean[x+1][y].setStatus(SquareStatus.BLOCKED);
+            }
+            if(x > 0 && ocean[x-1][y].getStatus().equals(SquareStatus.EMPTY)){
+                ocean[x-1][y].setStatus(SquareStatus.BLOCKED);
+            }
         }
     }
 

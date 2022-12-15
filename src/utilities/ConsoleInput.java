@@ -42,7 +42,6 @@ public class ConsoleInput implements Input {
 
 
     public int[] getCoordinates(){
-        display.showMessage("Enter coordinates");
         try{
             String playerCoordinates="";
             while (playerCoordinates.length()<1) {
@@ -57,12 +56,11 @@ public class ConsoleInput implements Input {
                 display.showMessage("Coordinates out of board! Try again!");
                 getCoordinates();
             }
-            return coordinates;
         } catch (NumberFormatException e) {
             display.showMessage("Wrong input! Try again!");
             getCoordinates();
-            return null;
         }
+        return coordinates;
     }
 
     private boolean areCoordinatesOnBoard(){
