@@ -14,7 +14,7 @@ public abstract class Player {
     protected List<Ship> ships = new ArrayList<>();
     protected List<Square> shots = new ArrayList<>();
 
-    public abstract int[] getShotCoors();
+    public abstract int[] getShotCoords();
 
     public abstract String getName(HashSet<String> nicknamesTaken);
 

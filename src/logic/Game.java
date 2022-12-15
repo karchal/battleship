@@ -5,8 +5,6 @@ import Board.BoardFactory;
 import Player.AiPlayer;
 import Player.HumanPlayer;
 import Player.Player;
-import utilities.ConsoleDisplay;
-import utilities.ConsoleInput;
 import utilities.Display;
 import utilities.Input;
 
@@ -17,8 +15,8 @@ public class Game {
     private Board board1;
     private Board board2;
     private Board enemyBoard;
-    private Display display;
-    private Input input;
+    private final Display display;
+    private final Input input;
 
     public Game(Display display, Input input) {
         this.display = display;
@@ -68,7 +66,7 @@ public class Game {
         int[] coords;
         do {
             display.showBoards(getBoard(currentPlayer), enemyBoard);
-            coords = currentPlayer.getShotCoors();
+            coords = currentPlayer.getShotCoords();
             enemyBoard.executeShot(coords[0], coords[1]);
             currentPlayer.addShot(enemyBoard.getSquare(coords[0], coords[1]));
         } while (currentPlayer.hasNextShot() && !enemyBoard.areAllShipsSunk());
@@ -104,13 +102,13 @@ public class Game {
     }
 
     private void setPlayerVsAi() {
-        player1 = new HumanPlayer(input);
+        player1 = new HumanPlayer(input, display);
         player2 = new AiPlayer();
     }
 
     private void setPlayerVsPlayer() {
-        player1 = new HumanPlayer(input);
-        player2 = new HumanPlayer(input);
+        player1 = new HumanPlayer(input, display);
+        player2 = new HumanPlayer(input, display);
     }
 
     public Player getWinner(){
