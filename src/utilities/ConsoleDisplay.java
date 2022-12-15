@@ -2,6 +2,9 @@ package utilities;
 
 import Board.Board;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConsoleDisplay implements Display {
 
     public void showModes() {
@@ -63,9 +66,9 @@ public class ConsoleDisplay implements Display {
                 "3. Exit");
     }
 
-    public void showHighScores() {
-        System.out.println("1. Ambroży\n" +
-                "2. Mietek\n" +
-                "3. Brajan");
+    public void showHighScores(Map<String, Integer> topScores) {
+        topScores.entrySet()
+                .stream()
+                .forEach(System.out::println);
     }
 }

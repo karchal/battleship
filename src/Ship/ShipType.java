@@ -12,4 +12,10 @@ public enum ShipType{
      public int getLength() {
           return length;
      }
+
+     @Override
+     public String toString(){
+          return name() + " of length " + getLength();
+     }
+
 }

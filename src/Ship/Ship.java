@@ -39,4 +39,13 @@ public class Ship {
         }
         return false;
     }
+
+    public int getPoints() {
+        int sum = 0;
+        for (Square square: shipParts){
+            sum += square.getPoints();
+        }
+        return sum;
+    }
+
 }
