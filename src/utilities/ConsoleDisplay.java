@@ -16,40 +16,40 @@ public class ConsoleDisplay implements Display {
 
     public void showBoards(Board playerBoard, Board enemyBoard){
         int boardsCount =0;
-        StringBuilder board = new StringBuilder();
+        StringBuilder displayBoard = new StringBuilder();
         char[] columns = "ABCDEFGHIJ".toCharArray();
-        board.append("    ");
+        displayBoard.append("    ");
         while (boardsCount!=2 ) {
             for (int i=0; i< playerBoard.size; i++) {
                 if (i !=4) {
-                    board.append(i + 1).append("   ");
+                    displayBoard.append(i + 1).append("   ");
                 } else {
-                    board.append(i + 1).append("    ");
+                    displayBoard.append(i + 1).append("    ");
                 }
             }
             boardsCount++;
             if (boardsCount==1){
-                board.append("|     ");
+                displayBoard.append("|     ");
             }
         }
-        board.append("\n");
+        displayBoard.append("\n");
 
         for (int i=0; i< playerBoard.size; i++){
-            board.append(columns[i]).append("  ");
+            displayBoard.append(columns[i]).append("  ");
             for (int j=0; j<playerBoard.size*2+6; j++){
                 if (j<10) {
-                    board.append(playerBoard.getOcean()[i][j]).append("  ");
+                    displayBoard.append(playerBoard.getOcean()[i][j]).append("  ");
                 } else if (j>15){
-                    board.append(enemyBoard.getOcean()[i][j-16]).append("  ");
+                    displayBoard.append(enemyBoard.getOcean()[i][j-16]).append("  ");
                 } else if (j==11){
-                    board.append(" | ");
+                    displayBoard.append(" | ");
                 } else if (j==13){
-                    board.append(columns[i]).append("  ");
+                    displayBoard.append(columns[i]).append("  ");
                 }
             }
-            board.append("\n");
+            displayBoard.append("\n");
         }
-        System.out.println(board);
+        System.out.println(displayBoard);
     }
 
     public void showBoard(Board board){
