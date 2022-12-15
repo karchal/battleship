@@ -10,7 +10,7 @@ public class AiPlayer extends Player {
             "Goresorrow", "Lightblade", "Death Cut", "Rumble Scream", "Giantcrest", "Reckless",
             "Bear", "Thirst", "Gold One", "Rockhair", "Sharp Grimace", "Demon Pelt", "Gore Stare", "Stormgaze"};
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public int[] getShotCoords() {
         int x, y;
@@ -19,15 +19,14 @@ public class AiPlayer extends Player {
             y = random.nextInt(Board.SIZE);
 
         } while (isShotRepeated(x, y));
-        int[] coords = {x, y};
-        return coords;
+        return new int[]{x, y};
     }
 
     private boolean isShotRepeated(int x, int y) {
         for (Square shot: shots){
-            if (shot.hasCoords(x, y)) return false;
+            if (shot.hasCoords(x, y)) return true;
         }
-        return true;
+        return false;
     }
 
     @Override
