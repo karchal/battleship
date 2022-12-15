@@ -44,4 +44,8 @@ public class Square {
         if (status == SquareStatus.SHIP) return POINTS_FOR_SHIP_SQUARE;
         return 0;
     }
+
+    public boolean hasCoords(int X, int Y) {
+        return this.X == X && this.Y == Y;
+    }
 }
