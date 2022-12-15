@@ -15,7 +15,7 @@ public enum ShipType{
 
      @Override
      public String toString(){
-          return name() + " of length " + getLength();
+          return name() + " with length " + getLength();
      }
 
 }

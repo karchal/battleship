@@ -55,8 +55,8 @@ public class ConsoleDisplay implements Display {
         System.out.println(displayBoard);
     }
 
-    public void showBoard(Board board){
-
+    public void showBoard(Board board) {
+        System.out.println("board");
     }
 
     public void showMenu(){

@@ -15,7 +15,7 @@ public interface Display {
 
     void showBoards(Board playerBoard, Board enemyBoard);
 
-    void showBoard(Board board); // we will use it during board creation
+    public void showBoard(Board board); // we will use it during board creation
 
     void showHighScores(Map<String, Integer> topFiveScores);
 

@@ -1,27 +1,38 @@
 package Board;
 
 import Player.Player;
-
 import Ship.ShipType;
-import utilities.Input;
 
 import java.util.Random;
 
-import utilities.ConsoleDisplay;
-import utilities.ConsoleInput;
+import utilities.Display;
+import utilities.Input;
 
 public class BoardFactory {
+    private final Display display;
+    private final Input input;
+
+    public BoardFactory(Display display, Input input) {
+        this.display = display;
+        this.input = input;
+    }
 
     public Board randomPlacement(Player player) {
         Board board = new Board(player);
         for (ShipType shipType: ShipType.values()){
+            display.showMessage("You place the" + shipType.toString());
+            display.showBoard(board);
             int[] coordinates;
             Direction direction;
-            do {
+            Boolean isPossibleToPlaceShip = false;
+            while (!isPossibleToPlaceShip){
                 coordinates = getRandomCoordinates();
                 direction = getRandomDirection();
-            } while (!board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength()));
-                board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
+                if (board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength())){
+                    board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
+                    isPossibleToPlaceShip = true;
+                } else { display.showMessage("It's impossible to place your ship here");}
+            }
             }
         board.unblockFieldsAround();
         return board;
@@ -29,19 +40,21 @@ public class BoardFactory {
 
     public Board manualPlacement(Player player) {
         Board board = new Board(player);
-        Square[][] ocean = board.getOcean();
-        //input should be of the same instance as input created in main
-        ConsoleInput input = new ConsoleInput(new ConsoleDisplay());
         for (ShipType shipType: ShipType.values()){
+            display.showMessage("You place the " + shipType.toString());
+            display.showBoard(board);
             int[] coordinates;
+            Boolean isPossibleToPlaceShip = false;
             Direction direction;
-            do {
+            while (!isPossibleToPlaceShip) {
                 coordinates = input.getCoordinates();
                 direction = input.getDirection();
-            } while (!board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength()));
-                board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
+                if (board.isPlacementOk(coordinates[0], coordinates[1], direction, shipType.getLength())) {
+                    board.placeShip(coordinates[0], coordinates[1], direction, shipType.getLength(), shipType);
+                    isPossibleToPlaceShip = true;
+                } else { display.showMessage("It's impossible to place your ship here");}
+            }
         }
-
         board.unblockFieldsAround();
         return board;
     }
@@ -57,6 +70,5 @@ public class BoardFactory {
         int y = new Random().nextInt(size);
         return new int[]{x, y};
     }
-
 
 }

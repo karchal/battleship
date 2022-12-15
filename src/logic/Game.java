@@ -43,7 +43,6 @@ public class Game {
     }
 
 
-
     private void setUpPlayers(int mode) {
         switch (mode) {
             case 1 -> setPlayerVsPlayer();
@@ -53,7 +52,7 @@ public class Game {
     }
 
     private Board createBoard(Player player) {
-        BoardFactory boardFactory = new BoardFactory();
+        BoardFactory boardFactory = new BoardFactory(display, input);
         if (player instanceof HumanPlayer){
             return boardFactory.manualPlacement(player);
         } else {
