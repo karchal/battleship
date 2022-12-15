@@ -2,9 +2,8 @@ package utilities;
 
 import Board.Board;
 
-import java.util.HashMap;
 import java.util.Map;
-
+import Board.SquareStatus;
 public class ConsoleDisplay implements Display {
 
     public void showModes() {
@@ -23,7 +22,7 @@ public class ConsoleDisplay implements Display {
         char[] columns = "ABCDEFGHIJ".toCharArray();
         displayBoard.append("    ");
         while (boardsCount!=2 ) {
-            for (int i=0; i< playerBoard.size; i++) {
+            for (int i = 0; i< playerBoard.SIZE; i++) {
                 if (i !=4) {
                     displayBoard.append(i + 1).append("   ");
                 } else {
@@ -37,13 +36,17 @@ public class ConsoleDisplay implements Display {
         }
         displayBoard.append("\n");
 
-        for (int i=0; i< playerBoard.size; i++){
+        for (int i = 0; i< playerBoard.SIZE; i++){
             displayBoard.append(columns[i]).append("  ");
-            for (int j=0; j<playerBoard.size*2+6; j++){
+            for (int j = 0; j<playerBoard.SIZE *2+6; j++){
                 if (j<10) {
                     displayBoard.append(playerBoard.getOcean()[i][j]).append("  ");
                 } else if (j>15){
-                    displayBoard.append(enemyBoard.getOcean()[i][j-16]).append("  ");
+                    if(enemyBoard.getOcean()[i][j-16].getStatus().equals(SquareStatus.SHIP)){
+                      displayBoard.append(SquareStatus.EMPTY.getSymbol()).append("  ");
+                    } else {
+                        displayBoard.append(enemyBoard.getOcean()[i][j - 16]).append("  ");
+                    }
                 } else if (j==11){
                     displayBoard.append(" | ");
                 } else if (j==13){

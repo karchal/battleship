@@ -6,12 +6,15 @@ public class Square {
 
     private final int X;
     private final int Y;
+
+    private boolean areShipsHidden;
     SquareStatus status;
 
     public Square(int x, int y, SquareStatus status) {
         X = x;
         Y = y;
         this.status = status;
+        this.areShipsHidden=false;
     }
 
     public String getStatusCharacter() {
@@ -35,7 +38,14 @@ public class Square {
     }
 
     public String toString() {
+        if (areShipsHidden()){
+            return SquareStatus.EMPTY.getSymbol();
+        }
         return getStatusCharacter();
+    }
+
+    public boolean areShipsHidden() {
+        return areShipsHidden;
     }
 
 
@@ -43,5 +53,9 @@ public class Square {
         if (status == SquareStatus.HIT) return POINTS_FOR_HIT_SQUARE;
         if (status == SquareStatus.SHIP) return POINTS_FOR_SHIP_SQUARE;
         return 0;
+    }
+
+    public boolean hasCoords(int X, int Y) {
+        return this.X == X && this.Y == Y;
     }
 }

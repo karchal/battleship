@@ -12,7 +12,7 @@ import static Board.SquareStatus.BLOCKED;
 public class Board {
     private Player player;
     private Square[][] ocean=new Square[10][10];
-    public int size=10;
+    public static final int SIZE = 10;
 
     public void setOcean(Square[][] ocean) {
         this.ocean = ocean;
@@ -20,8 +20,8 @@ public class Board {
 
     public Board(Player player){
         this.player = player;
-        for(int i = 0; i < size; i++){
-            for (int j = 0; j < size; j++){
+        for(int i = 0; i < SIZE; i++){
+            for (int j = 0; j < SIZE; j++){
                 this.ocean[i][j] = new Square(i, j, SquareStatus.EMPTY);
             }
         }
@@ -33,7 +33,7 @@ public class Board {
 
     public boolean isPlacementOk(int row, int col, Direction direction, int shipLength){
         if (direction == Direction.HORIZONTAL ) {
-            if (col + shipLength >= size) return false;
+            if (col + shipLength >= SIZE) return false;
             for (int i = 0; i < shipLength; i++) {
                 if (ocean[row][col + i].getStatus() == SquareStatus.SHIP
                         || ocean[row][col + i].getStatus() == SquareStatus.BLOCKED) {
@@ -41,7 +41,7 @@ public class Board {
                 }
             }
         } else {
-            if (row + shipLength >= size) return false;
+            if (row + shipLength >= SIZE) return false;
             for (int i = 0; i < shipLength; i++) {
                 if (ocean[row + i][col].getStatus() == SquareStatus.SHIP
                         || ocean[row + i][col].getStatus() == SquareStatus.BLOCKED) {
@@ -72,13 +72,13 @@ public class Board {
 
     public void blockFieldsAround(int x, int y){
         if(ocean[x][y].getStatus() == SquareStatus.SHIP){
-            if(x < size - 1 && y < size - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
+            if(x < SIZE - 1 && y < SIZE - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
             }
-            if(x > 0 && y < size - 1 && ocean[x-1][y+1].getStatus().equals(SquareStatus.EMPTY)){
+            if(x > 0 && y < SIZE - 1 && ocean[x-1][y+1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x-1][y+1].setStatus(SquareStatus.BLOCKED);
             }
-            if(x < size - 1 && y > 0 && ocean[x+1][y-1].getStatus().equals(SquareStatus.EMPTY)){
+            if(x < SIZE - 1 && y > 0 && ocean[x+1][y-1].getStatus().equals(SquareStatus.EMPTY)){
                 ocean[x+1][y-1].setStatus(SquareStatus.BLOCKED);
             }
             if(x > 0 && y > 0 && ocean[x-1][y-1].getStatus().equals(SquareStatus.EMPTY)){
@@ -111,15 +111,14 @@ public class Board {
     }
 
     public void unblockFieldsAround() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++){
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++){
                 if (ocean[i][j].getStatus() == BLOCKED) {
                     ocean[i][j].setStatus(SquareStatus.EMPTY);
                 }
             }
         }
     }
-
-    }
+}
 
 
