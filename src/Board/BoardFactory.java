@@ -20,9 +20,6 @@ public class BoardFactory {
     public Board randomPlacement(Player player) {
         Board board = new Board(player);
         for (ShipType shipType: ShipType.values()){
-            display.showMessage("You place the" + shipType.toString());
-            display.showBoard(board);
-            display.showMessage("Enter coordinates of the first (left-up) ship part");
             int[] coordinates;
             Direction direction;
             Boolean isPossibleToPlaceShip = false;
@@ -43,8 +40,9 @@ public class BoardFactory {
     public Board manualPlacement(Player player) {
         Board board = new Board(player);
         for (ShipType shipType: ShipType.values()){
-            display.showMessage("You place the " + shipType.toString());
+            display.showMessage("You place the" + shipType.toString());
             display.showBoard(board);
+            display.showMessage("Enter coordinates of the first (left-up) ship part");
             int[] coordinates;
             Boolean isPossibleToPlaceShip = false;
             Direction direction;
