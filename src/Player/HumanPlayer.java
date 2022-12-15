@@ -2,7 +2,7 @@ package Player;
 
 import utilities.Input;
 
-import java.util.Set;
+import java.util.HashSet;
 
 
 public class HumanPlayer extends Player {
@@ -16,7 +16,7 @@ public class HumanPlayer extends Player {
         return input.getCoordinates();
     }
 
-    public String getName(Set nicknamesTaken) {
+    public String getName(HashSet<String> nicknamesTaken) {
         return input.getStringInput();
     }
 

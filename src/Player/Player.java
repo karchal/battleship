@@ -5,8 +5,8 @@ import Board.SquareStatus;
 import Ship.Ship;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public abstract class Player {
     private static final int POINTS_FOR_WINNING = 100;
@@ -16,7 +16,7 @@ public abstract class Player {
 
     public abstract int[] getShotCoors();
 
-    public abstract String getName(Set nicknamesTaken);
+    public abstract String getName(HashSet<String> nicknamesTaken);
 
     public boolean isAlive() {
         for(Ship ship: ships){

@@ -1,15 +1,11 @@
 package Player;
 
-import Board.Square;
-import Ship.Ship;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class AiPlayer extends Player {
-    List<Ship> ships = new ArrayList<>();
-    List<Square> shots = new ArrayList<>();
+    public static final String[] NAMES = {"Butcher", "Drake", "Limp", "Hawk", "Lone Wolf",
+            "Goresorrow", "Lightblade", "Death Cut", "Rumble Scream", "Giantcrest", "Reckless",
+            "Bear", "Thirst", "Gold One", "Rockhair", "Sharp Grimace", "Demon Pelt", "Gore Stare", "Stormgaze"};
 
 
     public int[] getShotCoors() {
@@ -19,8 +15,12 @@ public class AiPlayer extends Player {
     }
 
     @Override
-    public String getName(Set nicknamesTaken) {
-        return "dupa";
+    public String getName(HashSet<String> nicknamesTaken) {
+        Random random = new Random();
+        String nickname;
+        do {
+            nickname = NAMES[random.nextInt(NAMES.length)];
+        } while (nicknamesTaken.contains(nickname));
+        return nickname;
     }
-
 }
