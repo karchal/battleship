@@ -18,7 +18,4 @@ public enum ShipType{
           return name() + " of length " + getLength();
      }
 
-     public static void main(String[] args) {
-          System.out.println(ShipType.CRUISER.toString());
-     }
 }
