@@ -48,7 +48,7 @@ public class Battleship {
         int score = player.getScore();
         if (topScores.size() < MAX_TOP_SCORES || score > getMinTopScore()){
             if (topScores.size() >= MAX_TOP_SCORES) removeItemWithMinScore();
-            String name = player.getName();
+            String name = player.getName(topScores.keySet());
             topScores.put(name, score);
             sortTopScores();
         }

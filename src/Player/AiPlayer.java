@@ -5,6 +5,7 @@ import Ship.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class AiPlayer extends Player {
     List<Ship> ships = new ArrayList<>();
@@ -18,7 +19,7 @@ public class AiPlayer extends Player {
     }
 
     @Override
-    public String getName() {
+    public String getName(Set nicknamesTaken) {
         return "dupa";
     }
 

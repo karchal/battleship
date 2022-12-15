@@ -2,6 +2,8 @@ package Player;
 
 import utilities.Input;
 
+import java.util.Set;
+
 
 public class HumanPlayer extends Player {
     Input input;
@@ -14,7 +16,7 @@ public class HumanPlayer extends Player {
         return input.getCoordinates();
     }
 
-    public String getName() {
+    public String getName(Set nicknamesTaken) {
         return input.getStringInput();
     }
 

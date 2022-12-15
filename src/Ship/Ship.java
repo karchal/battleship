@@ -47,4 +47,5 @@ public class Ship {
         }
         return sum;
     }
+
 }

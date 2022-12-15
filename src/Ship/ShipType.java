@@ -12,4 +12,13 @@ public enum ShipType{
      public int getLength() {
           return length;
      }
+
+     @Override
+     public String toString(){
+          return name() + " of length " + getLength();
+     }
+
+     public static void main(String[] args) {
+          System.out.println(ShipType.CRUISER.toString());
+     }
 }
