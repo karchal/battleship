@@ -38,7 +38,9 @@ public class Game {
         display.showModes();
         int mode = input.getGameMode();
         setUpPlayers(mode);
+        display.showMessage("Player 1, place your ships on board!");
         board1 = createBoard(player1);
+        display.showMessage("Player 2, place your ships on board!");
         board2 = createBoard(player2);
     }
 
@@ -64,11 +66,12 @@ public class Game {
     private void playTurn() {
         int[] coords;
         do {
-            display.clearConsole(); // CZY NA PEWNO W TYM MIEJSCU?
+            display.clearConsole(); // CZY NA PEWNO W TYM MIEJSCU? ODP. WYGLĄDA NA TO, ŻE TAK
             display.showBoards(getBoard(currentPlayer), enemyBoard);
             coords = currentPlayer.getShotCoords();
             enemyBoard.executeShot(coords[0], coords[1]);
             currentPlayer.addShot(enemyBoard.getSquare(coords[0], coords[1]));
+            display.showBoards(getBoard(currentPlayer), enemyBoard);
         } while (currentPlayer.hasNextShot() && !enemyBoard.areAllShipsSunk());
         input.getAnyKey();
     }

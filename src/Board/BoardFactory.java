@@ -22,6 +22,7 @@ public class BoardFactory {
         for (ShipType shipType: ShipType.values()){
             display.showMessage("You place the" + shipType.toString());
             display.showBoard(board);
+            display.showMessage("Enter coordinates of the first (left-up) ship part");
             int[] coordinates;
             Direction direction;
             Boolean isPossibleToPlaceShip = false;

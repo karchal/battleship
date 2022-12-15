@@ -101,7 +101,7 @@ public class ConsoleInput implements Input {
         }
     }
     public void getAnyKey(){
-        System.out.println("Press any key to continue");
+        display.showMessage("Press any key to change player!");
         try{System.in.read();}
         catch(Exception e){}
     }
