@@ -1,11 +1,15 @@
 package Board;
 
+import java.util.Objects;
+
 public class Square {
     private static final int POINTS_FOR_HIT_SQUARE = 1;
     private static final int POINTS_FOR_SHIP_SQUARE = 3;
 
     private final int X;
     private final int Y;
+
+    private boolean areShipsHidden;
     SquareStatus status;
 
     public Square(int x, int y, SquareStatus status) {
@@ -35,7 +39,14 @@ public class Square {
     }
 
     public String toString() {
+        if (areShipsHidden()){
+            return SquareStatus.EMPTY.getSymbol();
+        }
         return getStatusCharacter();
+    }
+
+    public boolean areShipsHidden() {
+        return areShipsHidden;
     }
 
 
@@ -44,4 +55,5 @@ public class Square {
         if (status == SquareStatus.SHIP) return POINTS_FOR_SHIP_SQUARE;
         return 0;
     }
+
 }

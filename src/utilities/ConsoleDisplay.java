@@ -4,6 +4,8 @@ import Board.Board;
 
 import java.util.HashMap;
 import java.util.Map;
+import Board.SquareStatus;
+import Board.Square;
 
 public class ConsoleDisplay implements Display {
 
@@ -43,7 +45,11 @@ public class ConsoleDisplay implements Display {
                 if (j<10) {
                     displayBoard.append(playerBoard.getOcean()[i][j]).append("  ");
                 } else if (j>15){
-                    displayBoard.append(enemyBoard.getOcean()[i][j-16]).append("  ");
+                    if(enemyBoard.getOcean()[i][j-16].getStatus().equals(SquareStatus.SHIP)){
+                      displayBoard.append(SquareStatus.EMPTY.getSymbol()).append("  ");
+                    } else {
+                        displayBoard.append(enemyBoard.getOcean()[i][j - 16]).append("  ");
+                    }
                 } else if (j==11){
                     displayBoard.append(" | ");
                 } else if (j==13){
