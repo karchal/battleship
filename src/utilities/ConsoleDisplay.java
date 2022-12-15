@@ -2,11 +2,8 @@ package utilities;
 
 import Board.Board;
 
-import java.util.HashMap;
 import java.util.Map;
 import Board.SquareStatus;
-import Board.Square;
-
 public class ConsoleDisplay implements Display {
 
     public void showModes() {
@@ -25,7 +22,7 @@ public class ConsoleDisplay implements Display {
         char[] columns = "ABCDEFGHIJ".toCharArray();
         displayBoard.append("    ");
         while (boardsCount!=2 ) {
-            for (int i=0; i< playerBoard.size; i++) {
+            for (int i = 0; i< playerBoard.SIZE; i++) {
                 if (i !=4) {
                     displayBoard.append(i + 1).append("   ");
                 } else {
@@ -39,9 +36,9 @@ public class ConsoleDisplay implements Display {
         }
         displayBoard.append("\n");
 
-        for (int i=0; i< playerBoard.size; i++){
+        for (int i = 0; i< playerBoard.SIZE; i++){
             displayBoard.append(columns[i]).append("  ");
-            for (int j=0; j<playerBoard.size*2+6; j++){
+            for (int j = 0; j<playerBoard.SIZE *2+6; j++){
                 if (j<10) {
                     displayBoard.append(playerBoard.getOcean()[i][j]).append("  ");
                 } else if (j>15){

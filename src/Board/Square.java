@@ -1,7 +1,5 @@
 package Board;
 
-import java.util.Objects;
-
 public class Square {
     private static final int POINTS_FOR_HIT_SQUARE = 1;
     private static final int POINTS_FOR_SHIP_SQUARE = 3;
@@ -16,6 +14,7 @@ public class Square {
         X = x;
         Y = y;
         this.status = status;
+        this.areShipsHidden=false;
     }
 
     public String getStatusCharacter() {
@@ -56,4 +55,7 @@ public class Square {
         return 0;
     }
 
+    public boolean hasCoords(int X, int Y) {
+        return this.X == X && this.Y == Y;
+    }
 }
