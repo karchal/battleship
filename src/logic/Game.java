@@ -71,6 +71,7 @@ public class Game {
             coords = currentPlayer.getShotCoords();
             enemyBoard.executeShot(coords[0], coords[1]);
             currentPlayer.addShot(enemyBoard.getSquare(coords[0], coords[1]));
+            display.clearConsole(); // I TU MOŻE TEŻ
             display.showBoards(getBoard(currentPlayer), enemyBoard);
         } while (currentPlayer.hasNextShot() && !enemyBoard.areAllShipsSunk());
         input.getAnyKey();
