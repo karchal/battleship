@@ -1,4 +1,4 @@
-package main.java.org.battleship.Player;
+package main.java.org.battleship.player;
 
 import main.java.org.battleship.utilities.Display;
 import main.java.org.battleship.utilities.Input;

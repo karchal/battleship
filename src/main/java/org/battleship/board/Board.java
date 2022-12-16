@@ -1,8 +1,8 @@
-package main.java.org.battleship.Board;
+package main.java.org.battleship.board;
 
-import main.java.org.battleship.Ship.Ship;
-import main.java.org.battleship.Player.Player;
-import main.java.org.battleship.Ship.ShipType;
+import main.java.org.battleship.ship.Ship;
+import main.java.org.battleship.player.Player;
+import main.java.org.battleship.ship.ShipType;
 
 import main.java.org.battleship.square.Square;
 import main.java.org.battleship.square.SquareStatus;
@@ -105,7 +105,7 @@ public class Board {
     public void executeShot(int x, int y) {
         ocean[x][y].hit();
         Optional<Ship> ship = player.getShipByShipPart(ocean[x][y]);
-        if (ship.isPresent()) ship.get().hit();
+        ship.ifPresent(Ship::hit);
     }
 
     public boolean areAllShipsSunk() {

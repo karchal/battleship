@@ -1,6 +1,6 @@
-package main.java.org.battleship.Player;
+package main.java.org.battleship.player;
 
-import main.java.org.battleship.Board.Board;
+import main.java.org.battleship.board.Board;
 import main.java.org.battleship.square.Square;
 
 import java.util.*;

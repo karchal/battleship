@@ -1,4 +1,4 @@
-package main.java.org.battleship.Ship;
+package main.java.org.battleship.ship;
 
 import main.java.org.battleship.square.Square;
 import main.java.org.battleship.square.SquareStatus;

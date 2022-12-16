@@ -1,4 +1,4 @@
-package main.java.org.battleship.Board;
+package main.java.org.battleship.board;
 
 public enum Direction {
     VERTICAL("v"), HORIZONTAL("h");

@@ -1,10 +1,10 @@
 package main.java.org.battleship.game;
 
-import main.java.org.battleship.Board.Board;
-import main.java.org.battleship.Board.BoardFactory;
-import main.java.org.battleship.Player.AiPlayer;
-import main.java.org.battleship.Player.HumanPlayer;
-import main.java.org.battleship.Player.Player;
+import main.java.org.battleship.board.Board;
+import main.java.org.battleship.board.BoardFactory;
+import main.java.org.battleship.player.AiPlayer;
+import main.java.org.battleship.player.HumanPlayer;
+import main.java.org.battleship.player.Player;
 import main.java.org.battleship.utilities.Display;
 import main.java.org.battleship.utilities.Input;
 

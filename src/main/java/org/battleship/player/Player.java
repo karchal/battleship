@@ -1,6 +1,6 @@
-package main.java.org.battleship.Player;
+package main.java.org.battleship.player;
 
-import main.java.org.battleship.Ship.Ship;
+import main.java.org.battleship.ship.Ship;
 import main.java.org.battleship.square.Square;
 import main.java.org.battleship.square.SquareStatus;
 

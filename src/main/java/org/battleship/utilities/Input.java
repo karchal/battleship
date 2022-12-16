@@ -1,6 +1,6 @@
 package main.java.org.battleship.utilities;
 
-import main.java.org.battleship.Board.Direction;
+import main.java.org.battleship.board.Direction;
 
 public interface Input {
 

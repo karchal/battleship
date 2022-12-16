@@ -1,6 +1,6 @@
 package main.java.org.battleship.utilities;
 
-import main.java.org.battleship.Board.Board;
+import main.java.org.battleship.board.Board;
 
 import java.util.Map;
 
