@@ -44,4 +44,9 @@ public class Ship {
         return sum;
     }
 
+    public void hit() {
+        if (isSinking()) {
+           sink();
+        }
+    }
 }

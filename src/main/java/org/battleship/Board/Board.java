@@ -8,8 +8,7 @@ import main.java.org.battleship.square.Square;
 import main.java.org.battleship.square.SquareStatus;
 import java.util.ArrayList;
 import java.util.List;
-
-import static main.java.org.battleship.square.SquareStatus.BLOCKED;
+import java.util.Optional;
 
 public class Board {
     private final Player player;
@@ -104,13 +103,9 @@ public class Board {
 
 
     public void executeShot(int x, int y) {
-        if (ocean[x][y].getStatus().equals(SquareStatus.SHIP)) {
-            ocean[x][y].changeToHit();
-            Ship ship = player.getShipByShipPart(ocean[x][y]);
-            if (ship.isSinking()) {
-                ship.sink();
-            }
-        } else ocean[x][y].changeToMissed();
+        ocean[x][y].hit();
+        Optional<Ship> ship = player.getShipByShipPart(ocean[x][y]);
+        if (ship.isPresent()) ship.get().hit();
     }
 
     public boolean areAllShipsSunk() {

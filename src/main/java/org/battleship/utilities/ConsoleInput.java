@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 public class ConsoleInput implements Input {
 
-    private final ConsoleDisplay display;
+    private final Display display;
     private final Scanner input = new Scanner(System.in);
     private final int[] coordinates = new int[2];
 
-    public ConsoleInput(ConsoleDisplay display) {
+    public ConsoleInput(Display display) {
         this.display = display;
     }
 

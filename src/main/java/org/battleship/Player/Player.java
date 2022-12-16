@@ -7,6 +7,7 @@ import main.java.org.battleship.square.SquareStatus;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Player {
     private static final int POINTS_FOR_WINNING = 100;
@@ -41,13 +42,13 @@ public abstract class Player {
         return SquareStatus.HIT.equals(type) || SquareStatus.SUNK.equals(type);
     }
 
-    public Ship getShipByShipPart(Square square){
+    public Optional<Ship> getShipByShipPart(Square square){
         for (Ship ship: ships){
             if (ship.hasSquare(square)){
-                return ship;
+                return Optional.of(ship);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public int getScore(){
