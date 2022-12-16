@@ -27,14 +27,6 @@ public abstract class Player {
         return false;
     }
 
-    public void updatePlayersShips(Square square) {
-        for(Ship ship: ships){
-            for(Square part: ship.getShipParts()){
-                if (part.getX() == square.getX() && part.getY() == square.getY())
-                    part.setStatus(square.getStatus());
-            }
-        }
-    }
 
     public void addShip(Ship ship) {
         ships.add(ship);

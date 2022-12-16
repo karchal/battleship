@@ -58,4 +58,30 @@ public class Square {
     public boolean hasCoords(int X, int Y) {
         return this.X == X && this.Y == Y;
     }
+
+    public boolean isEmpty(){
+        if (status == SquareStatus.EMPTY) return true;
+        return false;
+    }
+
+    public void blockIfEmpty(){
+        if (status == SquareStatus.EMPTY) status = SquareStatus.BLOCKED;
+    }
+
+    public void unlock(){
+        if (status == SquareStatus.BLOCKED) status = SquareStatus.EMPTY;
+    }
+
+    public void becomeShipPart() {
+        if (status == SquareStatus.EMPTY) status = SquareStatus.SHIP;
+    }
+
+    public void changeToMissed(){
+        if (status == SquareStatus.EMPTY) status = SquareStatus.MISSED;
+    }
+
+    public void changeToHit(){
+        if (status == SquareStatus.SHIP) status = SquareStatus.HIT;
+    }
+
 }

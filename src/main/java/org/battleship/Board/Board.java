@@ -13,7 +13,7 @@ import static main.java.org.battleship.square.SquareStatus.BLOCKED;
 
 public class Board {
     private final Player player;
-    private final Square[][] ocean=new Square[10][10];
+    private final Square[][] ocean = new Square[SIZE][SIZE];
     public static final int SIZE = 10;
 
 
@@ -55,13 +55,13 @@ public class Board {
         List<Square> shipParts = new ArrayList<>();
         if (direction == Direction.HORIZONTAL ) {
             for (int i = 0; i < shipLength; i++) {
-                ocean[row][col + i].setStatus(SquareStatus.SHIP);
+                ocean[row][col + i].becomeShipPart();
                 shipParts.add(ocean[row][col + i]);
                 blockFieldsAround(row, col + i);
             }
         } else {
             for (int i = 0; i < shipLength; i++) {
-                ocean[row + i][col].setStatus(SquareStatus.SHIP);
+                ocean[row + i][col].becomeShipPart();
                 shipParts.add(ocean[row + i][col]);
                 blockFieldsAround(row + i, col);
             }
@@ -71,29 +71,29 @@ public class Board {
 
     public void blockFieldsAround(int x, int y){
         if(ocean[x][y].getStatus() == SquareStatus.SHIP){
-            if(x < SIZE - 1 && y < SIZE - 1 && ocean[x+1][y+1].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x+1][y+1].setStatus(SquareStatus.BLOCKED);
+            if(x < SIZE - 1 && y < SIZE - 1){
+                ocean[x+1][y+1].blockIfEmpty();
             }
-            if(x > 0 && y < SIZE - 1 && ocean[x-1][y+1].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x-1][y+1].setStatus(SquareStatus.BLOCKED);
+            if(x > 0 && y < SIZE - 1){
+                ocean[x-1][y+1].blockIfEmpty();
             }
-            if(x < SIZE - 1 && y > 0 && ocean[x+1][y-1].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x+1][y-1].setStatus(SquareStatus.BLOCKED);
+            if(x < SIZE - 1 && y > 0){
+                ocean[x+1][y-1].blockIfEmpty();
             }
-            if(x > 0 && y > 0 && ocean[x-1][y-1].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x-1][y-1].setStatus(SquareStatus.BLOCKED);
+            if(x > 0 && y > 0){
+                ocean[x-1][y-1].blockIfEmpty();
             }
-            if(y < SIZE - 1 && ocean[x][y+1].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x][y+1].setStatus(SquareStatus.BLOCKED);
+            if(y < SIZE - 1 ){
+                ocean[x][y+1].blockIfEmpty();
             }
-            if(y > 0 && ocean[x][y-1].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x][y-1].setStatus(SquareStatus.BLOCKED);
+            if(y > 0 ){
+                ocean[x][y-1].blockIfEmpty();
             }
-            if(x < SIZE - 1 && ocean[x+1][y].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x+1][y].setStatus(SquareStatus.BLOCKED);
+            if(x < SIZE - 1 ){
+                ocean[x+1][y].blockIfEmpty();
             }
-            if(x > 0 && ocean[x-1][y].getStatus().equals(SquareStatus.EMPTY)){
-                ocean[x-1][y].setStatus(SquareStatus.BLOCKED);
+            if(x > 0){
+                ocean[x-1][y].blockIfEmpty();
             }
         }
     }
@@ -104,17 +104,13 @@ public class Board {
 
 
     public void executeShot(int x, int y) {
-        if (ocean[x][y].getStatus().equals(SquareStatus.EMPTY)) {
-            ocean[x][y].setStatus(SquareStatus.MISSED);
-            player.updatePlayersShips(ocean[x][y]);
-        } else if (ocean[x][y].getStatus().equals(SquareStatus.SHIP)) {
-            ocean[x][y].setStatus(SquareStatus.HIT);
-            player.updatePlayersShips(ocean[x][y]);
+        if (ocean[x][y].getStatus().equals(SquareStatus.SHIP)) {
+            ocean[x][y].changeToHit();
             Ship ship = player.getShipByShipPart(ocean[x][y]);
             if (ship.isSinking()) {
-                ship.sunk();
+                ship.sink();
             }
-        }
+        } else ocean[x][y].changeToMissed();
     }
 
     public boolean areAllShipsSunk() {
@@ -124,9 +120,7 @@ public class Board {
     public void unblockFieldsAround() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++){
-                if (ocean[i][j].getStatus() == BLOCKED) {
-                    ocean[i][j].setStatus(SquareStatus.EMPTY);
-                }
+                ocean[i][j].unlock();
             }
         }
     }
