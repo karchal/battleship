@@ -1,12 +1,20 @@
 package com.battleship;
+import com.battleship.game.Battleship;
+import com.battleship.game.TopScores;
+import com.battleship.utilities.ConsoleDisplay;
+import com.battleship.utilities.ConsoleInput;
+import com.battleship.utilities.Display;
+import org.junit.jupiter.api.Test;
 
-import main.java.org.battleship.utilities.ConsoleDisplay;
+
+import java.util.LinkedHashMap;
+
 public class BattleshipTest {
 
     @Test
     public void shouldShowMenuOnStart() {
-        ConsoleDisplay display = new ConsoleDisplay();
-        Battleship battleship = new Battleship(display, new ConsoleInput(display));
+        Display display = new ConsoleDisplay();
+        Battleship battleship = new Battleship(display, new ConsoleInput(display),  new TopScores(new LinkedHashMap<>()));
 
         battleship.start();
 
