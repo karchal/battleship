@@ -25,12 +25,8 @@ public class Ship {
 
     public void sink(){
         for(Square part: shipParts){
-            part.setStatus(SquareStatus.SUNK);
+            part.sink();
         }
-    }
-
-    public List<Square> getShipParts() {
-        return shipParts;
     }
 
     public boolean hasSquare(Square square) {

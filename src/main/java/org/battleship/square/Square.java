@@ -21,21 +21,11 @@ public class Square {
         return status.getSymbol();
     }
 
-    public void setStatus(SquareStatus status) {
-        this.status = status;
-    }
 
     public SquareStatus getStatus() {
         return status;
     }
 
-    public int getX() {
-        return X;
-    }
-
-    public int getY() {
-        return Y;
-    }
 
     public String toString() {
         if (areShipsHidden()){
@@ -58,12 +48,7 @@ public class Square {
     public boolean hasCoords(int X, int Y) {
         return this.X == X && this.Y == Y;
     }
-
-    public boolean isEmpty(){
-        if (status == SquareStatus.EMPTY) return true;
-        return false;
-    }
-
+    
     public void blockIfEmpty(){
         if (status == SquareStatus.EMPTY) status = SquareStatus.BLOCKED;
     }
@@ -73,7 +58,7 @@ public class Square {
     }
 
     public void becomeShipPart() {
-        if (status == SquareStatus.EMPTY) status = SquareStatus.SHIP;
+        status = SquareStatus.SHIP;
     }
 
     public void changeToMissed(){
@@ -83,5 +68,7 @@ public class Square {
     public void changeToHit(){
         if (status == SquareStatus.SHIP) status = SquareStatus.HIT;
     }
+
+    public void sink() { if (status == SquareStatus.HIT) status = SquareStatus.SUNK;}
 
 }
