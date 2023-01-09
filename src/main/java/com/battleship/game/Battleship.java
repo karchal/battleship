@@ -17,9 +17,15 @@ public class Battleship {
         this.topScores = topScores;
     }
 
+    public void showMenu() {
+        display.showMenu();
+    }
+
     public void start() {
-        while(true) {
+        boolean finished = false;
+        while(!finished) {
             display.showMenu();
+
             int menuOption = input.getOption(MENU_OPTIONS_NUMBER);
             switch (menuOption) {
                 case 1 -> {
@@ -31,7 +37,7 @@ public class Battleship {
 
                 }
                 case 2 -> display.showHighScores(topScores.getNamesAndScores());
-                case 3 -> System.exit(0);
+                case 3 -> finished = true;
             }
         }
     }

@@ -17,6 +17,7 @@ public class Main {
         Input input = new ConsoleInput(display);
 
         Battleship battleship = new Battleship(display, input, new TopScores(new LinkedHashMap<>()) );
+        //battleship.showMenu();
         battleship.start();
 
     }
